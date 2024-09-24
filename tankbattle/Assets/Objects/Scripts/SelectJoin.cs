@@ -39,7 +39,7 @@ public class SelectJoin : MonoBehaviour
         response.Pending = true;
 
         //最大人数をチェック(この場合は4人まで)
-        if (NetworkManager.Singleton.ConnectedClients.Count >= 4+1)
+        if (NetworkManager.Singleton.ConnectedClients.Count >= 2+1)
         {
             response.Approved = false;//接続を許可しない
             response.Pending = false;
