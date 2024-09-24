@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: -6595311917002828272}
   - component: {fileID: -756564109479171200}
   - component: {fileID: 6503398470740476162}
+  - component: {fileID: 5218463073340075828}
   m_Layer: 0
   m_Name: Tofu
   m_TagString: Untagged
@@ -166,7 +167,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2206913106936309984
 MonoBehaviour:
@@ -243,5 +244,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5218463073340075828
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940584815235945273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4a66bfe527f1e4bb4ec6b44ee8b8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
