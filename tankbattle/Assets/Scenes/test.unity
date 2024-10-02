@@ -931,6 +931,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6848641999363884709, guid: ce1abf9c15d603646930f29566daa331, type: 3}
+      propertyPath: speed
+      value: 1000
+      objectReference: {fileID: 0}
     - target: {fileID: 7940584815235945273, guid: ce1abf9c15d603646930f29566daa331, type: 3}
       propertyPath: m_Name
       value: Tofu Test

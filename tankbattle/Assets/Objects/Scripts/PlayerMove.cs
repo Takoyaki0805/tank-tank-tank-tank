@@ -13,17 +13,22 @@ public class PlayerMove : Move
     void Start()
     {
         var Input = obj.GetComponent<PlayerInput>();
+        // if(IsOwner){
         key = Input.actions["move"];
-        DontDestroyOnLoad(this);
+        // }
     }
 
     // Update is called once per frame
     public void Update()
     {
+        m = key.ReadValue<Vector2>();    
         if(IsOwner){
-            m = key.ReadValue<Vector2>();    
-            moveServerRpc(m.x,m.y);
+            moveServerRpc(m);
             // Debug.Log(m);
         }
+    }
+
+    void Awake(){
+        DontDestroyOnLoad(this);
     }
 }

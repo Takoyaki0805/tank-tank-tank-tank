@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5140479659058887179}
   - component: {fileID: 1852673398781394799}
   - component: {fileID: 1851810360737092009}
-  - component: {fileID: 495232269006409770}
+  - component: {fileID: 8401986805054506661}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -106,7 +106,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &495232269006409770
+--- !u!114 &8401986805054506661
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,10 +115,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 5071458509298672320}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b4a66bfe527f1e4bb4ec6b44ee8b8dd, type: 3}
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 0
+  SyncScaleY: 0
+  SyncScaleZ: 0
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  Interpolate: 1
+  SlerpPosition: 0
 --- !u!1 &7940584815235945273
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,11 +150,11 @@ GameObject:
   - component: {fileID: 8373462562716341731}
   - component: {fileID: 153799373754193766}
   - component: {fileID: 8542396843487700840}
-  - component: {fileID: 2206913106936309984}
   - component: {fileID: -6595311917002828272}
   - component: {fileID: -756564109479171200}
   - component: {fileID: 6503398470740476162}
-  - component: {fileID: 5479312262968910480}
+  - component: {fileID: 2099483184802311303}
+  - component: {fileID: 3777291313423767520}
   m_Layer: 0
   m_Name: Tofu
   m_TagString: Untagged
@@ -289,21 +306,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2206913106936309984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7940584815235945273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b700937b07069fd47968f3e008b03180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  Rig: {fileID: 8542396843487700840}
-  obj: {fileID: 7940584815235945273}
 --- !u!114 &-6595311917002828272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -366,7 +368,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5479312262968910480
+--- !u!114 &2099483184802311303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940584815235945273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b700937b07069fd47968f3e008b03180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  Rig: {fileID: 8542396843487700840}
+  tar: {fileID: 7940584815235945273}
+  obj: {fileID: 7940584815235945273}
+--- !u!114 &3777291313423767520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -381,4 +399,4 @@ MonoBehaviour:
   tar: {fileID: 7940584815235945273}
   cam: {fileID: 0}
   atk: {fileID: 5071458509298672320}
-  speed: 100
+  speed: 1000
