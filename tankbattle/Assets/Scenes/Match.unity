@@ -1478,7 +1478,7 @@ GameObject:
   - component: {fileID: 2095236434}
   m_Layer: 0
   m_Name: NetWorkManager
-  m_TagString: Untagged
+  m_TagString: NET
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1573,6 +1573,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b1dcee848f6967644b8b48b3b1931e16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  joinCode: 
   joinCodeInput: {fileID: 21203956}
 --- !u!114 &2095236434
 MonoBehaviour:

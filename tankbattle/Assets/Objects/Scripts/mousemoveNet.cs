@@ -23,17 +23,17 @@ public class mousemoveNet : NetworkBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
+        float h = Input.GetAxis("Mouse X");
         
         if(IsOwner){
-            float h = Input.GetAxis("Mouse X");
             // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
             cam.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
             // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
             aroundServerRpc(h);
-            // cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*2f;
-
+            // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
+            // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
         }
 
     }
@@ -47,7 +47,15 @@ public class mousemoveNet : NetworkBehaviour
 
     [Unity.Netcode.ServerRpc]
     void aroundServerRpc(float h){
-            atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+        atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+        return;
+    }
+
+    [Unity.Netcode.ServerRpc]
+    void turnServerRpc(Vector3 p,Vector3 l){
+        // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed*1000);
+        atk.transform.position = p;
+        atk.transform.localEulerAngles = l;
         return;
     }
 }

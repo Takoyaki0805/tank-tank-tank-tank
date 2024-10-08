@@ -11,6 +11,7 @@ using UnityEngine.SceneManagement;
 
 public class RelayTest : MonoBehaviour
 {
+    public string joinCode;
     [SerializeField] TMP_InputField joinCodeInput;
     private async void Start()
     {
@@ -28,7 +29,7 @@ public class RelayTest : MonoBehaviour
         try
         {
             Allocation allocation = await RelayService.Instance.CreateAllocationAsync(3);
-            string joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
+            joinCode = await RelayService.Instance.GetJoinCodeAsync(allocation.AllocationId);
 
             NetworkManager.Singleton.GetComponent<UnityTransport>().SetHostRelayData(
                 allocation.RelayServer.IpV4,
