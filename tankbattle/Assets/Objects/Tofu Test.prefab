@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 2206913106936309984}
   - component: {fileID: -6595311917002828272}
   - component: {fileID: 6848641999363884709}
+  - component: {fileID: 3796763771107678370}
   m_Layer: 0
   m_Name: Tofu Test
   m_TagString: Untagged
@@ -243,7 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: b3bb920cb770f8e4eb27d91abad5e7e2, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -254,7 +255,31 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5173f8b3-db71-4039-b579-d9c1021d9544
+    m_ActionName: move/move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3796763771107678370}
+        m_TargetAssemblyTypeName: Fire, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: be170a24-d97f-4f52-b8dd-96c80dd628f5
+    m_ActionName: move/Attack[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e
+    m_ActionName: move/mine[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: move
@@ -301,6 +326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   Rig: {fileID: 8542396843487700840}
+  tar: {fileID: 0}
   obj: {fileID: 7940584815235945273}
 --- !u!114 &-6595311917002828272
 MonoBehaviour:
@@ -338,3 +364,17 @@ MonoBehaviour:
   cam: {fileID: 0}
   atk: {fileID: 5071458509298672320}
   speed: 10
+--- !u!114 &3796763771107678370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940584815235945273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bce2b88410e7184ab2357bf1f377590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 3781681733089895731, guid: ef34ce47ea2809748ba55ce4e619a8e3, type: 3}
+  tar: {fileID: 5071458509298672320}

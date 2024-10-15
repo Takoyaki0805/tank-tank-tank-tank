@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "mine",
+                    "type": "Button",
+                    "id": "ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -84,10 +93,21 @@
                     "name": "",
                     "id": "d71b5f5d-42b5-46fe-af2c-5f1da2fbe86b",
                     "path": "<Mouse>/leftButton",
-                    "interactions": "",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f6962038-a2a7-47a9-82df-2006992a0159",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "mine",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

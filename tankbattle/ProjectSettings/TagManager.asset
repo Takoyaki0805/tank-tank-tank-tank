@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - NET
+  - playerbullet
   layers:
   - Default
   - TransparentFX

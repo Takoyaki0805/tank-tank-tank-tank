@@ -399,4 +399,4 @@ MonoBehaviour:
   tar: {fileID: 7940584815235945273}
   cam: {fileID: 0}
   atk: {fileID: 5071458509298672320}
-  speed: 1000
+  speed: 300

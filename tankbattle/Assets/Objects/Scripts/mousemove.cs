@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Unity.Netcode;
 
 public class mousemove : MonoBehaviour
 {
@@ -12,20 +14,43 @@ public class mousemove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        float h = Input.GetAxis("Mouse X");
-        cam.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
         // if(IsOwner){
-            atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            cam = GameObject.FindWithTag("MainCamera");
+            SceneManager.sceneLoaded += OnLoaded;
+            cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
+            cam.transform.parent = tar.transform;
         // }
     }
 
-    void Awake(){
-        cam = GameObject.FindWithTag("MainCamera");
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        float h = Input.GetAxis("Mouse X");
+        // Debug.Log(h);
+        if(h>=3f){
+            h=3f;
+        }
+        if(h<=-3f){
+            h=-3f;
+        }
+        
+        // if(IsOwner){
+            atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            cam.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
+            // aroundServerRpc(h);
+            // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
+            // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
+        // }
+
     }
+
+    void OnLoaded(Scene s,LoadSceneMode m){
+        cam = GameObject.FindWithTag("MainCamera");        
+    }
+
+    void Awake(){
+    }
+
+
 }

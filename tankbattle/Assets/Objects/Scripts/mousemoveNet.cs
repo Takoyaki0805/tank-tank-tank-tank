@@ -26,6 +26,13 @@ public class mousemoveNet : NetworkBehaviour
     void FixedUpdate()
     {
         float h = Input.GetAxis("Mouse X");
+        // Debug.Log(h);
+        if(h>=3f){
+            h=3f;
+        }
+        if(h<=-3f){
+            h=-3f;
+        }
         
         if(IsOwner){
             // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
