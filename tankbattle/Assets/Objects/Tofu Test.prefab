@@ -60,10 +60,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1be36af3e27b08a42b6599e0430daabc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -118,6 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4a66bfe527f1e4bb4ec6b44ee8b8dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   cam: {fileID: 0}
 --- !u!1 &7940584815235945273
 GameObject:
@@ -133,8 +137,8 @@ GameObject:
   - component: {fileID: 8373462562716341731}
   - component: {fileID: 153799373754193766}
   - component: {fileID: 8542396843487700840}
-  - component: {fileID: 2206913106936309984}
   - component: {fileID: -6595311917002828272}
+  - component: {fileID: 2206913106936309984}
   - component: {fileID: 6848641999363884709}
   - component: {fileID: 3796763771107678370}
   m_Layer: 0
@@ -185,10 +189,13 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1be36af3e27b08a42b6599e0430daabc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -259,7 +266,7 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 5173f8b3-db71-4039-b579-d9c1021d9544
-    m_ActionName: move/move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+    m_ActionName: 'move/move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3796763771107678370}
@@ -275,11 +282,11 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
     m_ActionId: be170a24-d97f-4f52-b8dd-96c80dd628f5
-    m_ActionName: move/Attack[/Mouse/leftButton]
+    m_ActionName: 'move/Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e
-    m_ActionName: move/mine[/Keyboard/space]
+    m_ActionName: 'move/mine[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: move
@@ -312,22 +319,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &2206913106936309984
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7940584815235945273}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b700937b07069fd47968f3e008b03180, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  Rig: {fileID: 8542396843487700840}
-  tar: {fileID: 0}
-  obj: {fileID: 7940584815235945273}
 --- !u!114 &-6595311917002828272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,7 +331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 951099334
+  GlobalObjectIdHash: 3604506701
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
   AlwaysReplicateAsRoot: 0
   SynchronizeTransform: 1
   ActiveSceneSynchronization: 0
@@ -348,6 +342,25 @@ MonoBehaviour:
   SpawnWithObservers: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
+--- !u!114 &2206913106936309984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940584815235945273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b700937b07069fd47968f3e008b03180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  speed: 1
+  Rig: {fileID: 8542396843487700840}
+  tar: {fileID: 0}
+  obj: {fileID: 7940584815235945273}
 --- !u!114 &6848641999363884709
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class Move : NetworkBehaviour
 
     [Unity.Netcode.ServerRpc]
     public void moveServerRpc(Vector2 m){
-        Rig.velocity = new Vector3(m.x*speed,0f,m.y*speed);
+        Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
         return;
     }
 }

@@ -34,7 +34,7 @@ public class PlayerMoveOff : MonoBehaviour
     }
 
     public void move(Vector2 m){
-        Rig.velocity = new Vector3(m.x*speed,0f,m.y*speed);
+        Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
         return;
     }
 

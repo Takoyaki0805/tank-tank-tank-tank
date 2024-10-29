@@ -10,7 +10,13 @@ public class mousemoveNet : NetworkBehaviour
     public GameObject cam;
     public GameObject atk;
     public float speed;
-
+    // float movep; 
+    float deltaCA;
+        private NetworkVariable<float> movep = new NetworkVariable<float>(
+        0f,                                          // 初期値
+        NetworkVariableReadPermission.Everyone,     // 読み取り権限
+        NetworkVariableWritePermission.Owner        // 書き込み権限
+        );
     // Start is called before the first frame update
     void Start()
     {
@@ -20,25 +26,40 @@ public class mousemoveNet : NetworkBehaviour
             cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*2f;
             cam.transform.parent = tar.transform;
         }
+
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        float h = Input.GetAxis("Mouse X");
+        float mh = Input.GetAxis("Mouse X");
+        float h = 0;
         // Debug.Log(h);
-        if(h>=3f){
+        if(mh>0){
             h=3f;
         }
-        if(h<=-3f){
+        if(mh<0){
             h=-3f;
         }
+
         
+        // movep = h*Time.deltaTime*speed;
         if(IsOwner){
+
+            movep.Value = h*Time.deltaTime*speed;
             // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            cam.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
             // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
-            aroundServerRpc(h);
+            cam.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
+            atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
+
+            // aroundServerRpc(h);
+            if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
+                deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
+            }
+
+            // Debug.Log(deltaCA);
+            // cam.transform.RotateAround (tar.transform.position, Vector3.up, deltaCA);
+
             // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
             // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
         }
@@ -54,7 +75,7 @@ public class mousemoveNet : NetworkBehaviour
 
     [Unity.Netcode.ServerRpc]
     void aroundServerRpc(float h){
-        atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+        // atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
         return;
     }
 
