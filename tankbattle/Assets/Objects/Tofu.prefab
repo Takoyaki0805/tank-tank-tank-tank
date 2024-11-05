@@ -354,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 292644944
+  GlobalObjectIdHash: 3822783049
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -452,3 +452,4 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   obj: {fileID: 3781681733089895731, guid: ef34ce47ea2809748ba55ce4e619a8e3, type: 3}
   tar: {fileID: 5071458509298672320}
+  speed: 50

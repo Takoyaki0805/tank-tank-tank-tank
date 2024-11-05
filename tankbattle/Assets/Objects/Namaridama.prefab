@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6208851730379199938}
   - component: {fileID: 906027906552232779}
   - component: {fileID: 3005350024947746115}
-  - component: {fileID: 1455052252973787592}
+  - component: {fileID: 1320880665809631648}
   - component: {fileID: -3726213917246480296}
   - component: {fileID: 6713485385199888413}
   m_Layer: 0
@@ -111,7 +111,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1455052252973787592
+--- !u!114 &1320880665809631648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,11 +120,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 3781681733089895731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5f11b46dc3c30469c71420fb086a2a, type: 3}
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tar: {fileID: 3781681733089895731}
-  speed: 50
+  GlobalObjectIdHash: 3667121880
+  InScenePlacedSourceGlobalObjectIdHash: 0
+  DeferredDespawnTick: 0
+  Ownership: 1
+  AlwaysReplicateAsRoot: 0
+  SynchronizeTransform: 1
+  ActiveSceneSynchronization: 0
+  SceneMigrationSynchronization: 1
+  SpawnWithObservers: 1
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+  SyncOwnerTransformWhenParented: 1
+  AllowOwnerToParent: 0
 --- !u!54 &-3726213917246480296
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -150,7 +161,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!114 &6713485385199888413
 MonoBehaviour:
