@@ -28,11 +28,24 @@ public class FireNet : NetworkBehaviour
     public void OnFire(InputAction.CallbackContext context){
         if(context.performed&&IsOwner){
             Vector3 pos = tar.transform.position;
-            GameObject h = Instantiate (obj,pos,Quaternion.identity);
-            NetworkObject f = h.GetComponent<NetworkObject>();
-            f.Spawn();
-            Rigidbody rig = h.GetComponent<Rigidbody>();
-            rig.AddForce( tar.transform.forward*speed,ForceMode.Impulse);   
+            if(IsHost){
+                spawn(pos);
+            }else{
+                SpawnRpc(pos);
+            }
         }
+    }
+
+    public void spawn(Vector3 pos){
+        GameObject h = Instantiate (obj,pos,Quaternion.identity);
+        NetworkObject f = h.GetComponent<NetworkObject>();
+        h.GetComponent<NetworkObject>().Spawn();
+        Rigidbody rig = h.GetComponent<Rigidbody>();
+        rig.AddForce( tar.transform.forward*speed,ForceMode.Impulse);   
+    }
+
+    [Rpc(SendTo.Server)]
+    public void SpawnRpc(Vector3 pos){
+        spawn(pos);
     }
 }

@@ -41,7 +41,12 @@ public class mousemoveNet : NetworkBehaviour
         if(mh<0){
             h=-3f;
         }
-
+        if(mh<0.1&&mh>-0.1){
+            h=0;
+        }else{
+            h=mh;
+        }
+        Debug.Log("h="+h+"mh="+mh);
         
         // movep = h*Time.deltaTime*speed;
         if(IsOwner){
@@ -53,9 +58,9 @@ public class mousemoveNet : NetworkBehaviour
             atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
 
             // aroundServerRpc(h);
-            if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
-                deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
-            }
+            // if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
+            //     deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
+            // }
 
             // Debug.Log(deltaCA);
             // cam.transform.RotateAround (tar.transform.position, Vector3.up, deltaCA);

@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 3719274400432630858}
   - component: {fileID: -8242104292997564311}
   m_Layer: 0
-  m_Name: Tofu
+  m_Name: Tofu 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

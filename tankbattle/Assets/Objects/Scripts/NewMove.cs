@@ -8,6 +8,7 @@ public class NewMove : Move
     public GameObject obj;
     Vector2 m;
     InputAction key;
+    public GameObject fuc;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +26,8 @@ public class NewMove : Move
         if(IsOwner){
             // moveServerRpc(m);
             Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
+            Rig.linearVelocity = fuc.transform.forward*m.y*speed;
+
             // Debug.Log(m);
         }
     }
