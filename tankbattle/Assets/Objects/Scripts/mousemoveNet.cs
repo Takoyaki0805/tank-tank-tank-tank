@@ -46,7 +46,7 @@ public class mousemoveNet : NetworkBehaviour
         }else{
             h=mh;
         }
-        Debug.Log("h="+h+"mh="+mh);
+        // Debug.Log("h="+h+"mh="+mh);
         
         // movep = h*Time.deltaTime*speed;
         if(IsOwner){

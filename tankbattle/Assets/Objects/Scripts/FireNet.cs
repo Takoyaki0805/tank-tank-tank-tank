@@ -9,7 +9,7 @@ public class FireNet : NetworkBehaviour
     public GameObject obj;
     // public GameObject objB;
     public GameObject tar;
-    // public GameObject bt; 
+    public GameObject g; 
     public float speed = 100;
 
 
@@ -41,6 +41,7 @@ public class FireNet : NetworkBehaviour
         NetworkObject f = h.GetComponent<NetworkObject>();
         h.GetComponent<NetworkObject>().Spawn();
         Rigidbody rig = h.GetComponent<Rigidbody>();
+        h.transform.eulerAngles = g.transform.eulerAngles;
         rig.AddForce( tar.transform.forward*speed,ForceMode.Impulse);   
     }
 

@@ -1418,7 +1418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6960e84d07fb87f47956e7a81d71c4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ProtocolType: 1
+  m_ProtocolType: 0
   m_UseWebSockets: 0
   m_UseEncryption: 0
   m_MaxPacketQueueSize: 128
@@ -1451,7 +1451,7 @@ MonoBehaviour:
   NetworkConfig:
     ProtocolVersion: 0
     NetworkTransport: {fileID: 1063792689}
-    PlayerPrefab: {fileID: 7940584815235945273, guid: 9d2f037ca547407429a1ed37b7e025ef, type: 3}
+    PlayerPrefab: {fileID: 5808396969040537871, guid: be89c022579243946b9da87a9f923a7b, type: 3}
     Prefabs:
       NetworkPrefabsLists:
       - {fileID: 11400000, guid: b7b0b70b4d08bac4995a075e09d7f124, type: 2}
