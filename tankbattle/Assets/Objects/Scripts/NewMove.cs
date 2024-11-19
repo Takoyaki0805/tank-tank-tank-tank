@@ -25,9 +25,9 @@ public class NewMove : Move
         m = key.ReadValue<Vector2>();
         if(IsOwner){
             // moveServerRpc(m);
-            Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
-            Rig.linearVelocity = -fuc.transform.forward*m.y*speed;
-
+            // Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
+            Rig.linearVelocity = tar.transform.forward*m.y*speed;
+            tar.transform.eulerAngles += new Vector3(0,m.x*speed,0);
             // Debug.Log(m);
         }
     }

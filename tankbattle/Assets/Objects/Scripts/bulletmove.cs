@@ -59,7 +59,7 @@ public class bulletmove : NetworkBehaviour
         if(c.gameObject.tag=="wall"){
         Rigidbody rig = this.gameObject.GetComponent<Rigidbody>();
         rig.linearVelocity = Vector3.Reflect(rig.linearVelocity,c.GetContact(0).normal);
-        Debug.Log(rig.linearVelocity);
+        // Debug.Log(rig.linearVelocity);
         }
     }
 
