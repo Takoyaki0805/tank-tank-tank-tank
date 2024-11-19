@@ -7,6 +7,7 @@ public class Move : NetworkBehaviour
 {
     public float speed = 1.0f;
     public Rigidbody Rig;
+    public GameObject tar;
 
     // Start is called before the first frame update
     void Start()
@@ -21,8 +22,8 @@ public class Move : NetworkBehaviour
     }
 
     [Unity.Netcode.ServerRpc]
-    public void moveServerRpc(float x,float y){
-        Rig.velocity = new Vector3(x*speed,0f,y*speed);
+    public void moveServerRpc(Vector2 m){
+        Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
         return;
     }
 }

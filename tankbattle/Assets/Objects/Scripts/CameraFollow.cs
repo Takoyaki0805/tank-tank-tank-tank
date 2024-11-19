@@ -5,10 +5,11 @@ using Unity.Netcode;
 
 public class CameraFollow : NetworkBehaviour
 {
-    GameObject cam;
+    public GameObject cam;
     // Start is called before the first frame update
     void Start()
     {
+        
     }
 
     // Update is called once per frame
@@ -17,8 +18,15 @@ public class CameraFollow : NetworkBehaviour
         if(cam == null){
             cam = GameObject.FindWithTag("MainCamera");
         }
+        // if(IsOwner){
+        //     cam.transform.position = this.transform.position + Vector3.back*3.5f + Vector3.up;
+        // }
+
+    }
+    void Awake()
+    {
         if(IsOwner){
-            cam.transform.position = this.transform.position + Vector3.back*3 + Vector3.up*2;
+            cam.transform.position = this.transform.position + Vector3.back*3.5f + Vector3.up;    
         }
     }
 }
