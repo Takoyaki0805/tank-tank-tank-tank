@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,9 +27,15 @@ public class NewMove : Move
         if(IsOwner){
             // moveServerRpc(m);
             // Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
-            Rig.linearVelocity = tar.transform.forward*m.y*speed;
-            tar.transform.eulerAngles += new Vector3(0,m.x*speed,0);
+            if(m.x!=0){
+                Rig.linearVelocity = tar.transform.forward*Math.Abs(m.x)*speed;
+                tar.transform.eulerAngles += new Vector3(0,m.x*speed/8f,0);
+                // Debug.Log("a");
             // Debug.Log(m);
+            }else{
+                Rig.linearVelocity = tar.transform.forward*m.y*speed;
+                // Debug.Log("i");
+            }
         }
     }
 
