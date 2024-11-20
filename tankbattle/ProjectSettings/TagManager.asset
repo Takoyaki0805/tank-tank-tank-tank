@@ -8,6 +8,7 @@ TagManager:
   - playerbullet
   - wall
   - mark
+  - ball
   layers:
   - Default
   - TransparentFX

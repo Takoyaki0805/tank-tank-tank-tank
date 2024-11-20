@@ -18,7 +18,7 @@
                     "name": "Attack",
                     "type": "Button",
                     "id": "be170a24-d97f-4f52-b8dd-96c80dd628f5",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -27,7 +27,7 @@
                     "name": "mine",
                     "type": "Button",
                     "id": "ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -103,7 +103,7 @@
                 {
                     "name": "",
                     "id": "f6962038-a2a7-47a9-82df-2006992a0159",
-                    "path": "<Keyboard>/space",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",

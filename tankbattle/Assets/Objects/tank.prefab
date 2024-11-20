@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2858760274168360291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 6.2715454, y: -0.6599999, z: -55.500008}
+  m_LocalPosition: {x: 6.2715454, y: -0.6599999, z: -65.5}
   m_LocalScale: {x: 33.333332, y: 6.6666665, z: 33.333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -663,6 +663,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
       insertIndex: -1
       addedObject: {fileID: -1900226508457182559}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3272674074335322707}
     - targetCorrespondingSourceObject: {fileID: 1509145944742020268, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7335771095799728586}
@@ -843,7 +846,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2452607361
+  GlobalObjectIdHash: 2607117805
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1082,6 +1085,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   obj: {fileID: 6558115808608444339, guid: 6a924c3a413958c479c567ed8af0a1cf, type: 3}
+  timer: 0
+--- !u!114 &-3272674074335322707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5808396969040537871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb76fdf4afe58ef4d9c507b68e8c3eef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxlife: 100
 --- !u!1 &5817889853736334474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 929905818870833364, guid: fceacd21e62ab2f488627f09997c5632, type: 3}

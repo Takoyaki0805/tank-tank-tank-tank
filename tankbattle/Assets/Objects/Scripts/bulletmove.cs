@@ -6,11 +6,14 @@ using Unity.Netcode;
 
 public class bulletmove : NetworkBehaviour
 {
+    public int atk = 30;
     // public GameObject tar; 
     // public GameObject bt; 
     // public Rigidbody rig;
     // public float speed = 50;
-    public float timelimit = 5.0f;
+    public float timelimit = 120.0f;
+    public int bounce = 2;
+    int count = 0;
     float timer = 0f;
     // Start is called before the first frame update
     void Start()
@@ -29,7 +32,7 @@ public class bulletmove : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer >= timelimit){
+        if(timer >= timelimit || count>bounce){
             // Destroy(this.gameObject);
             if(IsHost){
                 deletespawn();
@@ -39,7 +42,7 @@ public class bulletmove : NetworkBehaviour
             }
         }
         timer += Time.deltaTime;
-        Debug.Log(timer);
+        // Debug.Log(timer);
     }
     public override void OnNetworkSpawn()
     {
@@ -59,7 +62,9 @@ public class bulletmove : NetworkBehaviour
         if(c.gameObject.tag=="wall"){
         Rigidbody rig = this.gameObject.GetComponent<Rigidbody>();
         rig.linearVelocity = Vector3.Reflect(rig.linearVelocity,c.GetContact(0).normal);
+        // rig.AddForce( this.transform.forward*8f,ForceMode.Impulse);   
         // Debug.Log(rig.linearVelocity);
+        count++;
         }
     }
 
