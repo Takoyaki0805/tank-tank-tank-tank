@@ -905,7 +905,19 @@ MonoBehaviour:
     m_ActionId: be170a24-d97f-4f52-b8dd-96c80dd628f5
     m_ActionName: 'move/Attack[/Mouse/leftButton]'
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6089395833816949009}
+        m_TargetAssemblyTypeName: FireNet, Assembly-CSharp
+        m_MethodName: Setmine
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e
     m_ActionName: 'move/mine[/Keyboard/space]'
   m_NeverAutoSwitchControlSchemes: 0
@@ -1028,6 +1040,7 @@ MonoBehaviour:
   tar: {fileID: 2858760274168360291}
   g: {fileID: 98004432384538109}
   speed: 20
+  mine: {fileID: 3159298073375207366, guid: 72cd7e408c034ad4db8a11aee11886c5, type: 3}
 --- !u!95 &4488574456218722672
 Animator:
   serializedVersion: 7

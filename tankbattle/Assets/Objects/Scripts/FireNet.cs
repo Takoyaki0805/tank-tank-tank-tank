@@ -11,7 +11,7 @@ public class FireNet : NetworkBehaviour
     public GameObject tar;
     public GameObject g; 
     public float speed = 100;
-
+    public GameObject mine;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +36,17 @@ public class FireNet : NetworkBehaviour
         }
     }
 
+    public void Setmine(InputAction.CallbackContext context){
+        if(context.performed&&IsOwner){
+            Vector3 pos = tar.transform.position;
+            if(IsHost){
+                minespawn(pos);
+            }else{
+                mineSpawnRpc(pos);
+            }
+        }
+    }
+
     public void spawn(Vector3 pos){
         GameObject h = Instantiate (obj,pos,Quaternion.identity);
         NetworkObject f = h.GetComponent<NetworkObject>();
@@ -45,8 +56,19 @@ public class FireNet : NetworkBehaviour
         rig.AddForce( tar.transform.forward*speed,ForceMode.Impulse);   
     }
 
+    public void minespawn(Vector3 pos){
+        GameObject h = Instantiate (mine,pos,Quaternion.identity);
+        NetworkObject f = h.GetComponent<NetworkObject>();
+        h.GetComponent<NetworkObject>().Spawn();
+    }
+
     [Rpc(SendTo.Server)]
     public void SpawnRpc(Vector3 pos){
         spawn(pos);
+    }
+    
+    [Rpc(SendTo.Server)]
+    public void mineSpawnRpc(Vector3 pos){
+        minespawn(pos);
     }
 }

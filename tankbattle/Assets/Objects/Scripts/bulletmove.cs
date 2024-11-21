@@ -66,6 +66,13 @@ public class bulletmove : NetworkBehaviour
         // Debug.Log(rig.linearVelocity);
         count++;
         }
+        if(c.gameObject.tag=="ball"){
+            if(IsHost){
+                deletespawn();
+            }else{
+                desSpawnRpc();
+            }
+        }
     }
 
     [Rpc(SendTo.Server)]
