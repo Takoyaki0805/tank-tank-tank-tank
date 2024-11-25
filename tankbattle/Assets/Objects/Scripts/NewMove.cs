@@ -29,9 +29,9 @@ public class NewMove : Move
             // Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
             if(m.x!=0){
                 Rig.linearVelocity = tar.transform.forward*Math.Abs(m.x)*speed;
-                tar.transform.eulerAngles += new Vector3(0,m.x*speed/8f,0);
+                tar.transform.eulerAngles += new Vector3(0,m.x*speed*50*Time.deltaTime,0);
                 // Debug.Log("a");
-            // Debug.Log(m);
+            // Debug.Log(Time.deltaTime);
             }else{
                 Rig.linearVelocity = tar.transform.forward*m.y*speed;
                 // Debug.Log("i");
