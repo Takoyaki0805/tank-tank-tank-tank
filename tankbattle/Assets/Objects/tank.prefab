@@ -68,6 +68,37 @@ MonoBehaviour:
   SwitchTransformSpaceWhenParented: 0
   Interpolate: 1
   SlerpPosition: 0
+--- !u!1 &8033554926616995599
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7225373142220148730}
+  m_Layer: 0
+  m_Name: mineplace
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7225373142220148730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8033554926616995599}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -5.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6615861418898863029}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &981018715489077420
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -632,6 +663,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
       insertIndex: -1
       addedObject: {fileID: 727329344942370631}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7225373142220148730}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
       insertIndex: -1
@@ -920,6 +954,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ff4e4dcd-dc3a-4090-ad18-f1f3e443f96e
     m_ActionName: 'move/mine[/Keyboard/space]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 080b722a-01e5-4fe6-8d17-0b234d93bbff
+    m_ActionName: 'move/camera[/DualShock4GamepadHID/rightStick/left,/DualShock4GamepadHID/rightStick/right]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: move
@@ -1041,6 +1079,14 @@ MonoBehaviour:
   g: {fileID: 98004432384538109}
   speed: 20
   mine: {fileID: 3159298073375207366, guid: 72cd7e408c034ad4db8a11aee11886c5, type: 3}
+  minepos: {fileID: 8033554926616995599}
+  havbullet: 2
+  maxbullet: 2
+  bulletcharge: 5
+  coolcharge: 1.5
+  havmine: 3
+  chargetime: 0
+  cooltimer: 1.5
 --- !u!95 &4488574456218722672
 Animator:
   serializedVersion: 7
@@ -1112,6 +1158,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxlife: 100
+  life: 0
+  dea: {fileID: 3929824772112469389, guid: 566c73fec2a66a4449de0a6acf46b57f, type: 3}
 --- !u!1 &5817889853736334474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 929905818870833364, guid: fceacd21e62ab2f488627f09997c5632, type: 3}

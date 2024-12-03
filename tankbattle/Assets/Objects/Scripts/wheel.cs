@@ -4,7 +4,7 @@ using Unity.Netcode;
 public class wheel : NetworkBehaviour
 {
     public GameObject obj;
-    bool Isstay = true;
+    // bool Isstay = true;
     public float timer;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

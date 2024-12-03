@@ -27,7 +27,7 @@ public class mousemoveNet : NetworkBehaviour
         if(IsOwner){
             cam = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*2f;
+            cam.transform.position = atk.transform.position + Vector3.back*4.2f +Vector3.up*2f;
             cam.transform.parent = tar.transform;
         }
         var Input = this.gameObject.GetComponent<PlayerInput>();
@@ -58,7 +58,7 @@ public class mousemoveNet : NetworkBehaviour
         // movep = h*Time.deltaTime*speed;
         if(IsOwner){
             if(m.x!=0){
-                movep.Value = m.x*Time.deltaTime*speed/5f;
+                movep.Value = m.x*Time.deltaTime*speed/3.5f;
             }else{
                 movep.Value = h*Time.deltaTime*speed;
             }

@@ -10,6 +10,8 @@ public class NewMove : Move
     Vector2 m;
     InputAction key;
     public GameObject fuc;
+    GameObject spawnpos;
+    bool decidespawn = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,12 @@ public class NewMove : Move
     // Update is called once per frame
     public void Update()
     {
+        if(!decidespawn){
+            // if(mng == null){}else{
+
+                decidespawn = true;
+            // }
+        }
         m = key.ReadValue<Vector2>();
         if(IsOwner){
             // moveServerRpc(m);
@@ -42,4 +50,13 @@ public class NewMove : Move
     void Awake(){
         DontDestroyOnLoad(this);
     }
+
+    public override void OnNetworkSpawn(){
+            GameObject mng = GameObject.FindGameObjectWithTag("spawnMNG");
+
+                spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
+                this.gameObject.transform.position = spawnpos.transform.position;
+                Debug.Log("ああああ");     
+    }
+
 }
