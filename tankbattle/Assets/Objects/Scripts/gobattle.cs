@@ -16,7 +16,7 @@ public class gobattle : MonoBehaviour
     }
 
     public void go(){ 
-        // SceneManager.LoadScene("Battle Stage");
-        SceneManager.LoadScene("newBattle");
+        SceneManager.LoadScene("Battle Stage");
+        // SceneManager.LoadScene("newBattle");
     }
 }
