@@ -1,7 +1,8 @@
 using UnityEngine;
 using System;
+using Unity.Netcode;
 
-public class SpawnMangement : MonoBehaviour
+public class SpawnMangement : NetworkBehaviour
 {
     GameObject[] anthor;
     bool[] empty;
@@ -35,5 +36,8 @@ public class SpawnMangement : MonoBehaviour
         }        
         return Wherespawn[sIndex];
     }
-
+    [Rpc(SendTo.Server)]
+    public void SpawnchkRpc(){
+        playerattach();
+    }
 }

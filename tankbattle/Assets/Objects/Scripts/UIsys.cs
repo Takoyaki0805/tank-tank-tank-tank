@@ -18,6 +18,7 @@ public class UIsys : NetworkBehaviour
     public TMP_Text txt;
     public Slider hpbar;
     public Slider chargebar;
+    GameObject g;
 
 
 
@@ -30,15 +31,16 @@ public class UIsys : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        GameObject g;
         try{
-            g = tar.transform.parent.parent.gameObject;
+            // if(IsOwner){
+                g = tar.transform.parent.parent.gameObject;
+            // }
         }catch(MissingReferenceException e){
             return;
         }
         code = g.GetComponent<FireNet>();
         hpcode = g.GetComponent<alive>();
-            if(IsOwner){
+            // if(IsOwner){
                 bullet = code.havbullet;
                 mine = code.havmine;
                 nowbulletcharge = code.chargetime;
@@ -63,6 +65,6 @@ public class UIsys : NetworkBehaviour
                     }
                 }
                 txt.SetText(mine+"");
-            }   
+            // }   
     }
 }

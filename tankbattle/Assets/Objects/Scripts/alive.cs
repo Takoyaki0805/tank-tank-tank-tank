@@ -31,10 +31,10 @@ public class alive : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider c){
-        // if(c.gameObject.tag=="ball"){
-        //     Destroy(c.gameObject);
-        //     life -= c.gameObject.GetComponent<bulletmove>().atk;
-        // }
+        if(c.gameObject.tag=="ball"){
+            Destroy(c.gameObject);
+            life -= c.gameObject.GetComponent<bulletmove>().atk;
+        }
         if(c.gameObject.tag=="mineatkzone"){
             // Destroy(c.gameObject);
             life -= c.gameObject.GetComponent<minedmg>().atk;
