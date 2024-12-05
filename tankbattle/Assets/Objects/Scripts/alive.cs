@@ -46,8 +46,8 @@ public class alive : MonoBehaviour
     }    
 
     void isGameOver(){
-        Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
-        this.transform.localScale = Vector3.zero;
+        // Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
+        // this.transform.localScale = Vector3.zero;
         // this.gameObject.SetActive(false);
     }
 
