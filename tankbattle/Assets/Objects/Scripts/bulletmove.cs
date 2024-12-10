@@ -59,20 +59,20 @@ public class bulletmove : NetworkBehaviour
     }
 
     void OnCollisionEnter(Collision c){
-        if(c.gameObject.tag=="wall"){
-        Rigidbody rig = this.gameObject.GetComponent<Rigidbody>();
-        rig.linearVelocity = Vector3.Reflect(rig.linearVelocity,c.GetContact(0).normal);
+        // if(c.gameObject.tag=="wall"){
+        // Rigidbody rig = this.gameObject.GetComponent<Rigidbody>();
+        // rig.linearVelocity = Vector3.Reflect(rig.linearVelocity,c.GetContact(0).normal);
         // rig.AddForce( this.transform.forward*8f,ForceMode.Impulse);   
         // Debug.Log(rig.linearVelocity);
-        count++;
-        }
-        if(c.gameObject.tag=="ball"){
+        // count++;
+        // }
+        // if(c.gameObject.tag=="ball"){
             if(IsHost){
                 deletespawn();
             }else{
                 desSpawnRpc();
             }
-        }
+        // }
     }
 
     [Rpc(SendTo.Server)]

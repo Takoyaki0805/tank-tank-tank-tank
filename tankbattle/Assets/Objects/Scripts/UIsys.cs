@@ -2,6 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UIsys : NetworkBehaviour
 {
@@ -35,6 +36,8 @@ public class UIsys : NetworkBehaviour
             // if(IsOwner){
                 g = tar.transform.parent.parent.gameObject;
             // }
+        }catch(NullReferenceException e){
+            return;
         }catch(MissingReferenceException e){
             return;
         }

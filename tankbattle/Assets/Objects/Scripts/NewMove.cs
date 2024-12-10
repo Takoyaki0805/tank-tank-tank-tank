@@ -51,12 +51,11 @@ public class NewMove : Move
         DontDestroyOnLoad(this);
     }
 
-    // public override void OnNetworkSpawn(){
-    //         GameObject mng = GameObject.FindGameObjectWithTag("spawnMNG");
-
-    //             spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
-    //             this.gameObject.transform.position = spawnpos.transform.position;
-    //             Debug.Log("ああああ");     
-    // }
+    public override void OnNetworkSpawn(){
+        GameObject mng = GameObject.FindGameObjectWithTag("spawnMNG");
+        spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
+        this.gameObject.transform.position = spawnpos.transform.position;
+        Debug.Log("ああああ");     
+    }
 
 }

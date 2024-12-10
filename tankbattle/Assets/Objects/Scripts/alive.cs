@@ -6,11 +6,13 @@ public class alive : MonoBehaviour
     public int life;
     public GameObject dea;
     bool onetime = true;
+    GameObject cam;
     // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        life = maxlife;        
+        life = maxlife;
+        cam = GameObject.FindWithTag("MainCamera");
     }
 
     // Update is called once per frame
@@ -46,9 +48,12 @@ public class alive : MonoBehaviour
     }    
 
     void isGameOver(){
-        // Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
-        // this.transform.localScale = Vector3.zero;
+        GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
+        this.transform.localScale = Vector3.zero;
         // this.gameObject.SetActive(false);
+        // cam.SetActive(false);
+        cam.transform.parent = d.transform;
+        cam.transform.localPosition = Vector3.up*5f;
     }
 
     void isone(){
