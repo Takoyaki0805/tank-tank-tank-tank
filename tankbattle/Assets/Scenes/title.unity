@@ -1027,7 +1027,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TANNK BATTLE  3D
+  m_text: 'TANK TANK
+
+    Revolutions'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e2af703f8d81953469f0d7f83e204ee1, type: 2}
   m_sharedMaterial: {fileID: -418061140472847995, guid: e2af703f8d81953469f0d7f83e204ee1, type: 2}
@@ -1036,12 +1038,12 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287129869
-  m_fontColor: {r: 0.050284788, g: 0.4123353, b: 0.5330188, a: 1}
+    rgba: 4294963653
+  m_fontColor: {r: 0.77254903, g: 0.94509804, b: 1, a: 1}
   m_enableVertexGradient: 1
   m_colorMode: 3
   m_fontColorGradient:
-    topLeft: {r: 0.14150941, g: 0.063412234, b: 0.063412234, a: 1}
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
     topRight: {r: 1, g: 1, b: 1, a: 1}
     bottomLeft: {r: 1, g: 1, b: 1, a: 1}
     bottomRight: {r: 0, g: 0, b: 0, a: 1}
@@ -1364,6 +1366,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1409933743}
     m_Modifications:
+    - target: {fileID: -1363869061923126836, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: Rig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2572487599878776161, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4076797173576114769, guid: be89c022579243946b9da87a9f923a7b, type: 3}
       propertyPath: GlobalObjectIdHash
       value: 2149292041
@@ -1390,15 +1400,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615861418898863029, guid: be89c022579243946b9da87a9f923a7b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -49
+      value: -218
       objectReference: {fileID: 0}
     - target: {fileID: 6615861418898863029, guid: be89c022579243946b9da87a9f923a7b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -250
+      value: -187
       objectReference: {fileID: 0}
     - target: {fileID: 6615861418898863029, guid: be89c022579243946b9da87a9f923a7b, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 250
+      value: 289
       objectReference: {fileID: 0}
     - target: {fileID: 6615861418898863029, guid: be89c022579243946b9da87a9f923a7b, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1428,7 +1438,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 9188612155305188818, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: SyncScaleX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188612155305188818, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: SyncScaleY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188612155305188818, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: SyncScaleZ
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9188612155305188818, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+      propertyPath: AuthorityMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4076797173576114769, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -1653214094054004663, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -4446518939595551479, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 734785341860316348, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -1384152127077984429, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -1363869061923126836, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 6089395833816949009, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -1900226508457182559, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: -109951341515135223, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 6546162626945066913, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 978493750906184075, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 9188612155305188818, guid: be89c022579243946b9da87a9f923a7b, type: 3}
+    - {fileID: 2572487599878776161, guid: be89c022579243946b9da87a9f923a7b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

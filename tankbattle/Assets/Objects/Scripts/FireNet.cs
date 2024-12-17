@@ -20,11 +20,13 @@ public class FireNet : NetworkBehaviour
     public int havmine = 3;
     public float chargetime = 0f;
     public float cooltimer = 0f;
+    public AudioClip sound1;
+    AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +57,7 @@ public class FireNet : NetworkBehaviour
             }
             havbullet--;
             cooltimer = 0f;
+            audioSource.PlayOneShot(sound1);
         }
     }
 

@@ -225,6 +225,7 @@ MonoBehaviour:
   pheseC: 6
   atk: 100
   bomb: {fileID: 3260788832912874051}
+  particle: {fileID: 19800006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
 --- !u!1 &3260788832912874051
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,8 +313,7 @@ MeshRenderer:
   m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 1be36af3e27b08a42b6599e0430daabc, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
