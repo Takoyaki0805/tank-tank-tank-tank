@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
+using UnityEngine.InputSystem;
 
 public class mousemoveNet : NetworkBehaviour
 {
@@ -10,6 +11,9 @@ public class mousemoveNet : NetworkBehaviour
     public GameObject cam;
     public GameObject atk;
     public float speed;
+    InputAction key;
+    Vector2 m;
+
     // float movep; 
     float deltaCA;
         private NetworkVariable<float> movep = new NetworkVariable<float>(
@@ -23,10 +27,12 @@ public class mousemoveNet : NetworkBehaviour
         if(IsOwner){
             cam = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*2f;
+            cam.transform.position = atk.transform.position + Vector3.back*4.2f +Vector3.up*2f;
             cam.transform.parent = tar.transform;
         }
-
+        var Input = this.gameObject.GetComponent<PlayerInput>();
+        // if(IsOwner){
+        key = Input.actions["camera"];
     }
 
     // Update is called once per frame
@@ -34,6 +40,7 @@ public class mousemoveNet : NetworkBehaviour
     {
         float mh = Input.GetAxis("Mouse X");
         float h = 0;
+        m = key.ReadValue<Vector2>();
         // Debug.Log(h);
         if(mh>0){
             h=3f;
@@ -50,8 +57,14 @@ public class mousemoveNet : NetworkBehaviour
         
         // movep = h*Time.deltaTime*speed;
         if(IsOwner){
+            if(m.x!=0){
+                movep.Value = m.x*Time.deltaTime*speed/3.5f;
+            }else{
+                movep.Value = h*Time.deltaTime*speed;
+            }
+            // Debug.Log(m.x);
+            // Debug.Log(movep.Value);
 
-            movep.Value = h*Time.deltaTime*speed;
             // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
             // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
             cam.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);

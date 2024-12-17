@@ -7,6 +7,11 @@ TagManager:
   - NET
   - playerbullet
   - wall
+  - mark
+  - ball
+  - mineatkzone
+  - spawn
+  - spawnMNG
   layers:
   - Default
   - TransparentFX
