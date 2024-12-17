@@ -66,7 +66,9 @@ public class bulletmove : NetworkBehaviour
         // Debug.Log(rig.linearVelocity);
         // count++;
         // }
-        // if(c.gameObject.tag=="ball"){
+        // if(c.gameObject.tag=="player"){
+        //     c.gameObject.GetComponent<alive>().life -= atk;
+        // }
             if(IsHost){
                 deletespawn();
             }else{

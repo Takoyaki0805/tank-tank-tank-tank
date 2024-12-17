@@ -12,6 +12,7 @@ TagManager:
   - mineatkzone
   - spawn
   - spawnMNG
+  - playUI
   layers:
   - Default
   - TransparentFX

@@ -52,7 +52,7 @@ public class UIsys : NetworkBehaviour
                 maxhp = hpcode.maxlife;
                 hpbar.value = (float)hp/(float)maxhp;
                 chargebar.value = (float)nowbulletcharge/(float)bulletcharge;
-                Debug.Log(hp/maxhp);
+                // Debug.Log(hp/maxhp);
                 if(bullet==0){
                     foreach(GameObject j in mark){
                         j.SetActive(false);
