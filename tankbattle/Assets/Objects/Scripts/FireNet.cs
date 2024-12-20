@@ -22,6 +22,9 @@ public class FireNet : NetworkBehaviour
     public float cooltimer = 0f;
     public AudioClip sound1;
     AudioSource audioSource;
+    public bool ablemine = false;
+    public bool ablefire = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +51,7 @@ public class FireNet : NetworkBehaviour
     }
 
     public void OnFire(InputAction.CallbackContext context){
-        if(context.performed&&IsOwner&&havbullet!=0&&coolcharge<=cooltimer){
+        if(context.performed&&IsOwner&&havbullet!=0&&coolcharge<=cooltimer&&ablefire){
             Vector3 pos = tar.transform.position;
             if(IsHost){
                 spawn(pos);
@@ -62,7 +65,7 @@ public class FireNet : NetworkBehaviour
     }
 
     public void Setmine(InputAction.CallbackContext context){
-        if(context.performed&&IsOwner&&havmine!=0){
+        if(context.performed&&IsOwner&&havmine!=0&&ablemine){
             Vector3 pos = minepos.transform.position;
             if(IsHost){
                 minespawn(pos);

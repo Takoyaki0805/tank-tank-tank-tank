@@ -13,6 +13,7 @@ public class mousemoveNet : NetworkBehaviour
     public float speed;
     InputAction key;
     Vector2 m;
+    public bool ablecameramove = false;
 
     // float movep; 
     float deltaCA;
@@ -42,46 +43,47 @@ public class mousemoveNet : NetworkBehaviour
         float h = 0;
         m = key.ReadValue<Vector2>();
         // Debug.Log(h);
-        if(mh>0){
-            h=3f;
-        }
-        if(mh<0){
-            h=-3f;
-        }
-        if(mh<0.1&&mh>-0.1){
-            h=0;
-        }else{
-            h=mh;
-        }
-        // Debug.Log("h="+h+"mh="+mh);
-        
-        // movep = h*Time.deltaTime*speed;
-        if(IsOwner){
-            if(m.x!=0){
-                movep.Value = m.x*Time.deltaTime*speed/3.5f;
-            }else{
-                movep.Value = h*Time.deltaTime*speed;
+        if(ablecameramove){
+            if(mh>0){
+                h=3f;
             }
-            // Debug.Log(m.x);
-            // Debug.Log(movep.Value);
+            if(mh<0){
+                h=-3f;
+            }
+            if(mh<0.1&&mh>-0.1){
+                h=0;
+            }else{
+                h=mh;
+            }
+            // Debug.Log("h="+h+"mh="+mh);
+            
+            // movep = h*Time.deltaTime*speed;
+            if(IsOwner){
+                if(m.x!=0){
+                    movep.Value = m.x*Time.deltaTime*speed/3.5f;
+                }else{
+                    movep.Value = h*Time.deltaTime*speed;
+                }
+                // Debug.Log(m.x);
+                // Debug.Log(movep.Value);
 
-            // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
-            cam.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
-            atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
+                // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+                // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
+                cam.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
+                atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
 
-            // aroundServerRpc(h);
-            // if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
-            //     deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
-            // }
+                // aroundServerRpc(h);
+                // if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
+                //     deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
+                // }
 
-            // Debug.Log(deltaCA);
-            // cam.transform.RotateAround (tar.transform.position, Vector3.up, deltaCA);
+                // Debug.Log(deltaCA);
+                // cam.transform.RotateAround (tar.transform.position, Vector3.up, deltaCA);
 
-            // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
-            // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
+                // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
+                // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
+            }
         }
-
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){

@@ -58,12 +58,14 @@ public class alive : MonoBehaviour
 			// インスタンス化したパーティクルシステムのGameObjectを5秒後に削除する。(任意)
 			// ※第一引数をnewParticleだけにするとコンポーネントしか削除されない。
 			Destroy(newParticle.gameObject, 5.0f);
-        GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
-        this.transform.localScale = Vector3.zero;
+        // GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
+        // this.transform.localScale = Vector3.zero;
+        this.gameObject.layer = LayerMask.NameToLayer("Unseen");
+        cam.GetComponent<playersheel>().sheel();
         // this.gameObject.SetActive(false);
         // cam.SetActive(false);
-        cam.transform.parent = d.transform;
-        cam.transform.localPosition = Vector3.up*5f;
+        // cam.transform.parent = d.transform;
+        // cam.transform.localPosition = Vector3.up*5f;
     }
 
     void isone(){

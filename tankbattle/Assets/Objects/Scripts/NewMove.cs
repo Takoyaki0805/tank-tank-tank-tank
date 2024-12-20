@@ -12,6 +12,7 @@ public class NewMove : Move
     public GameObject fuc;
     GameObject spawnpos;
     bool decidespawn = false;
+    public bool ablemove = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +33,7 @@ public class NewMove : Move
             // }
         }
         m = key.ReadValue<Vector2>();
-        if(IsOwner){
+        if(IsOwner&&ablemove){
             // moveServerRpc(m);
             // Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
             if(m.x!=0){

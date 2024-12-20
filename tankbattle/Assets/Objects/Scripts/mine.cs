@@ -13,7 +13,6 @@ public class mine : NetworkBehaviour
     Animator anim;
     public ParticleSystem particle;
 
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
