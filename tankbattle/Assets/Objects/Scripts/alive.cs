@@ -8,8 +8,14 @@ public class alive : MonoBehaviour
     bool onetime = true;
     GameObject cam;
     public ParticleSystem particle;
+    public GameObject[] tankpolygon;
     // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private NetworkVariable<int> networkInt = new NetworkVariable<int>(
+        0,                                          // 初期値
+        NetworkVariableReadPermission.Everyone,     // 読み取り権限
+        NetworkVariableWritePermission.Owner        // 書き込み権限
+        );
     void Start()
     {
         life = maxlife;
@@ -60,7 +66,9 @@ public class alive : MonoBehaviour
 			Destroy(newParticle.gameObject, 5.0f);
         // GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
         // this.transform.localScale = Vector3.zero;
-        this.gameObject.layer = LayerMask.NameToLayer("Unseen");
+        foreach (GameObject g in tankpolygon){
+            g.gameObject.layer = LayerMask.NameToLayer("Unseen");
+        }
         cam.GetComponent<playersheel>().sheel();
         // this.gameObject.SetActive(false);
         // cam.SetActive(false);

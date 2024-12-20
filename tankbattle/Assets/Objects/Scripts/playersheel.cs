@@ -17,6 +17,7 @@ public class playersheel : MonoBehaviour
         }catch(NullReferenceException e){
 
         }
+        dissheel();
     }
 
     public void sheel(){
@@ -24,6 +25,7 @@ public class playersheel : MonoBehaviour
         tar.GetComponent<FireNet>().ablefire = false;
         tar.GetComponent<FireNet>().ablemine = false;
         tar.GetComponent<mousemoveNet>().ablecameramove = false;
+        tar.GetComponent<wheel>().wheelable = false;
     }
 
     public void dissheel(){
@@ -31,5 +33,6 @@ public class playersheel : MonoBehaviour
         tar.GetComponent<FireNet>().ablefire = true;
         tar.GetComponent<FireNet>().ablemine = true;
         tar.GetComponent<mousemoveNet>().ablecameramove = true;
+        tar.GetComponent<wheel>().wheelable = true;
     }
 }

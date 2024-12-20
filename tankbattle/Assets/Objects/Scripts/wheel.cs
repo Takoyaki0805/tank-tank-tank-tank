@@ -6,6 +6,7 @@ public class wheel : NetworkBehaviour
     public GameObject obj;
     // bool Isstay = true;
     public float timer;
+    public bool wheelable = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -15,14 +16,16 @@ public class wheel : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(0.35f<=timer){
-            if(IsHost){
-                wheelline(this.transform.position);
-            }else{
-                wheellineRpc(this.transform.position);
+        if(wheelable){
+            timer += Time.deltaTime;
+            if(0.35f<=timer){
+                if(IsHost){
+                    wheelline(this.transform.position);
+                }else{
+                    wheellineRpc(this.transform.position);
+                }
+                timer = 0;
             }
-            timer = 0;
         }
     }
 
@@ -45,6 +48,8 @@ public class wheel : NetworkBehaviour
         // spob.transform.localEulerAngles = this.transform.localEulerAngles;
         // Debug.Log("でた");
     }
+
+    
 
     [Rpc(SendTo.Server)]
     public void wheellineRpc(Vector3 pos){

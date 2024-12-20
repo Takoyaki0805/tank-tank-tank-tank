@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 2858760274168360291}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 6.2715454, y: -0.6599999, z: -65.5}
+  m_LocalPosition: {x: 6.2715454, y: -0.6599999, z: -84.9}
   m_LocalScale: {x: 33.333332, y: 6.6666665, z: 33.333332}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1171,6 +1171,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   obj: {fileID: 6558115808608444339, guid: 6a924c3a413958c479c567ed8af0a1cf, type: 3}
   timer: 0
+  wheelable: 0
 --- !u!114 &-109951341515135223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1187,6 +1188,17 @@ MonoBehaviour:
   life: 0
   dea: {fileID: 3929824772112469389, guid: 566c73fec2a66a4449de0a6acf46b57f, type: 3}
   particle: {fileID: 19800002, guid: 3364c97de68d3a147af572d1c71c6455, type: 3}
+  tankpolygon:
+  - {fileID: 5236397363941150962}
+  - {fileID: 1499713093507213898}
+  - {fileID: 1081245997928184527}
+  - {fileID: 5817889853736334474}
+  - {fileID: 1637186238886041053}
+  - {fileID: 7256519217166161503}
+  - {fileID: 7087451485798687509}
+  - {fileID: 2461017751884482655}
+  - {fileID: 7334530073232160142}
+  - {fileID: 98004432384538109}
 --- !u!82 &8188770074450776877
 AudioSource:
   m_ObjectHideFlags: 0
