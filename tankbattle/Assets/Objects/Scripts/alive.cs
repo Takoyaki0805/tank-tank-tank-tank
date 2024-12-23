@@ -78,7 +78,7 @@ public class alive : NetworkBehaviour
         foreach (GameObject g in tankpolygon){
             g.gameObject.layer = LayerMask.NameToLayer("Unseen");
         }
-        cam.GetComponent<playersheel>().sheel();
+        // cam.GetComponent<playersheel>().sheel();
         // this.gameObject.SetActive(false);
         // cam.SetActive(false);
         // cam.transform.parent = d.transform;

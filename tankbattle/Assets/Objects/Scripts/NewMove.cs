@@ -59,4 +59,6 @@ public class NewMove : Move
         Debug.Log("ああああ");     
     }
 
+    
+
 }
