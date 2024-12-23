@@ -78,6 +78,23 @@ public class alive : NetworkBehaviour
         foreach (GameObject g in tankpolygon){
             g.gameObject.layer = LayerMask.NameToLayer("Unseen");
         }
+
+        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
+        GameObject mn = GameObject.FindGameObjectWithTag("spawnMNG");
+        if(IsOwner&&cam.GetComponent<color>().isred){
+            if(IsHost){
+                mn.GetComponent<scoreboard>().redscore();
+            }else{
+                mn.GetComponent<scoreboard>().redscoreRpc();
+            }
+        }
+        if(IsOwner&&cam.GetComponent<color>().isblue){
+            if(IsHost){
+                mn.GetComponent<scoreboard>().bluescore();
+            }else{
+                mn.GetComponent<scoreboard>().bluescoreRpc();
+            }            
+        }
         // cam.GetComponent<playersheel>().sheel();
         // this.gameObject.SetActive(false);
         // cam.SetActive(false);

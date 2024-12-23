@@ -1,4 +1,6 @@
 using UnityEngine;
+using Unity.Netcode;
+using UnityEngine.SceneManagement;
 
 public class button : MonoBehaviour
 {
@@ -17,6 +19,16 @@ public class button : MonoBehaviour
     public void buttonswitch(){
         GameObject tar = this.gameObject.transform.parent.parent.gameObject;
         tar.GetComponent<playersheel>().button();
+    }
+
+    public void fbuttonswitch(){
+        GameObject tar = this.gameObject.transform.parent.parent.gameObject;
+        tar.GetComponent<playersheel>().fbutton();
+    }
+
+    public void stopnet(){
+        NetworkManager.Singleton.Shutdown();
+        SceneManager.LoadScene("NewMatch");
     }
 }
 

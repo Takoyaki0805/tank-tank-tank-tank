@@ -926,7 +926,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GlobalObjectIdHash: 2452607361
+  GlobalObjectIdHash: 2607117805
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1109,6 +1109,8 @@ MonoBehaviour:
   obj: {fileID: 5808396969040537871}
   fuc: {fileID: 98004432384538109}
   ablemove: 0
+  red: {fileID: 2100000, guid: 6d94f2ff20d556a43b3df92e9f68e8dd, type: 2}
+  blue: {fileID: 2100000, guid: 4c1e4347e1104ee4d95ed92e5531767c, type: 2}
 --- !u!114 &6089395833816949009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1409,6 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a497531396a847040add7aec44a6f95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
   tar: {fileID: 5808396969040537871}
 --- !u!1 &5817889853736334474 stripped
 GameObject:

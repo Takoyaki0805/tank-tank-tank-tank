@@ -10,9 +10,13 @@ public class NewMove : Move
     Vector2 m;
     InputAction key;
     public GameObject fuc;
-    GameObject spawnpos;
+    public GameObject spawnpos;
     bool decidespawn = false;
     public bool ablemove = false;
+    public Material red;
+    public Material blue;
+    GameObject mng;
+    GameObject cam;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +30,15 @@ public class NewMove : Move
     // Update is called once per frame
     public void Update()
     {
+        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
+        //    mng.GetComponent<scoreboard>().isred = true;
+            cam.GetComponent<color>().isred = true;
+            // Debug.Log("aaaaaaa"); 
+        }
+        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
+        //    mng.GetComponent<scoreboard>().isblue = true; 
+            cam.GetComponent<color>().isblue = true; 
+        }
         if(!decidespawn){
             // if(mng == null){}else{
 
@@ -46,6 +59,8 @@ public class NewMove : Move
                 // Debug.Log("i");
             }
         }
+
+        
     }
 
     void Awake(){
@@ -53,10 +68,15 @@ public class NewMove : Move
     }
 
     public override void OnNetworkSpawn(){
-        GameObject mng = GameObject.FindGameObjectWithTag("spawnMNG");
+        mng = GameObject.FindGameObjectWithTag("spawnMNG");
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
         spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
         this.gameObject.transform.position = spawnpos.transform.position;
-        Debug.Log("ああああ");     
+        // GameObject child = spawnpos.transform.Find("flag").gameObject;
+        // Debug.Log();
+        // Debug.Log("ああああ");
+        Debug.Log(red);
+
     }
 
     

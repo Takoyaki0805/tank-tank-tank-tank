@@ -68,6 +68,14 @@ public class playersheel : NetworkBehaviour
         }
     }
 
+    public void fbutton(){
+        if(IsHost){
+            fboolC();
+        }else{
+            fboolRpc();
+        }
+    }
+
     [Rpc(SendTo.Server)]
     public void boolRpc(){
         networkbool.Value = true;
@@ -76,6 +84,16 @@ public class playersheel : NetworkBehaviour
     void boolC(){
         networkbool.Value = true;
     }
+
+    [Rpc(SendTo.Server)]
+    public void fboolRpc(){
+        networkbool.Value = false;
+    }
+
+    void fboolC(){
+        networkbool.Value = false;
+    }    
+
 
 
 }
