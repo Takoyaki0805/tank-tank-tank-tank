@@ -30,15 +30,15 @@ public class NewMove : Move
     // Update is called once per frame
     public void Update()
     {
-        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
-        //    mng.GetComponent<scoreboard>().isred = true;
-            cam.GetComponent<color>().isred = true;
-            // Debug.Log("aaaaaaa"); 
-        }
-        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
-        //    mng.GetComponent<scoreboard>().isblue = true; 
-            cam.GetComponent<color>().isblue = true; 
-        }
+        // if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
+        // //    mng.GetComponent<scoreboard>().isred = true;
+        //     cam.GetComponent<color>().isred = true;
+        //     // Debug.Log("aaaaaaa"); 
+        // }
+        // if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
+        // //    mng.GetComponent<scoreboard>().isblue = true; 
+        //     cam.GetComponent<color>().isblue = true; 
+        // }
         if(!decidespawn){
             // if(mng == null){}else{
 
@@ -77,6 +77,15 @@ public class NewMove : Move
         // Debug.Log("ああああ");
         Debug.Log(red);
 
+        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
+        //    mng.GetComponent<scoreboard>().isred = true;
+            cam.GetComponent<color>().isred = true;
+            // Debug.Log("aaaaaaa"); 
+        }
+        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
+        //    mng.GetComponent<scoreboard>().isblue = true; 
+            cam.GetComponent<color>().isblue = true; 
+        }
     }
 
     
