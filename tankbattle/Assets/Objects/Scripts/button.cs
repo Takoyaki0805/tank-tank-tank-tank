@@ -26,9 +26,6 @@ public class button : MonoBehaviour
         tar.GetComponent<playersheel>().fbutton();
     }
 
-    public void stopnet(){
-        NetworkManager.Singleton.Shutdown();
-        SceneManager.LoadScene("NewMatch");
-    }
+
 }
 

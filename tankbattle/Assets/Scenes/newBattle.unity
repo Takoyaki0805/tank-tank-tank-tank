@@ -1657,8 +1657,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1743914393}
-        m_TargetAssemblyTypeName: button, Assembly-CSharp
+      - m_Target: {fileID: 583528522}
+        m_TargetAssemblyTypeName: ReadySet, Assembly-CSharp
         m_MethodName: stopnet
         m_Mode: 1
         m_Arguments:
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Ready
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1874,7 +1874,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 473724304}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2147,6 +2147,7 @@ GameObject:
   - component: {fileID: 583528518}
   - component: {fileID: 583528520}
   - component: {fileID: 583528521}
+  - component: {fileID: 583528522}
   m_Layer: 0
   m_Name: Spawnmanager
   m_TagString: spawnMNG
@@ -2245,6 +2246,20 @@ MonoBehaviour:
   cam: {fileID: 1743914388}
   main: {fileID: 501623633}
   maxscore: 1
+--- !u!114 &583528522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583528516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81fc74553eb35764e82c8651ad1278a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowTopMostFoldoutHeaderGroup: 1
+  ready: {fileID: 1286746894}
 --- !u!1 &591966787
 GameObject:
   m_ObjectHideFlags: 0
@@ -9449,12 +9464,12 @@ GameObject:
   - component: {fileID: 1286746897}
   - component: {fileID: 1286746896}
   m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
+  m_Name: Ready
+  m_TagString: Ready
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1286746895
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9593,7 +9608,7 @@ GameObject:
   - component: {fileID: 1305840816}
   - component: {fileID: 1305840818}
   - component: {fileID: 1305840817}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14182,7 +14197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1970877260}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: mine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

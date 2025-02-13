@@ -69,6 +69,7 @@ public class NewMove : Move
 
     public override void OnNetworkSpawn(){
         mng = GameObject.FindGameObjectWithTag("spawnMNG");
+        mng.GetComponent<ReadySet>().boot();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
         spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
         this.gameObject.transform.position = spawnpos.transform.position;
