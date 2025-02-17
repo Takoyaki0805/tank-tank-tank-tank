@@ -13,7 +13,7 @@ public class alive : NetworkBehaviour
     // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NetworkVariable<int> networklife = new NetworkVariable<int>(
-        0,                                          // 初期値
+        100,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Server        // 書き込み権限
         );

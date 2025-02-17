@@ -39,12 +39,7 @@ public class NewMove : Move
         // //    mng.GetComponent<scoreboard>().isblue = true; 
         //     cam.GetComponent<color>().isblue = true; 
         // }
-        if(!decidespawn){
-            // if(mng == null){}else{
 
-                decidespawn = true;
-            // }
-        }
         m = key.ReadValue<Vector2>();
         if(IsOwner&&ablemove){
             // moveServerRpc(m);
@@ -68,25 +63,32 @@ public class NewMove : Move
     }
 
     public override void OnNetworkSpawn(){
+        Debug.Log(IsOwner);
+        Debug.Log(IsLocalPlayer);
+        Debug.Log(IsOwnedByServer);
+        // if(IsOwner){
         mng = GameObject.FindGameObjectWithTag("spawnMNG");
-        mng.GetComponent<ReadySet>().boot();
+        // mng.GetComponent<ReadySet>().boot();
         cam = GameObject.FindGameObjectWithTag("MainCamera");
+        
         spawnpos = mng.GetComponent<SpawnMangement>().playerattach();
+        Debug.Log(spawnpos);
+        
         this.gameObject.transform.position = spawnpos.transform.position;
+        mng.GetComponent<ReadySet>().boot();
+
+        cam.GetComponent<team>().setpos(spawnpos);
+        cam.GetComponent<team>().setteam();
+        // }/
+        // Debug.Log(IsOwner);
+
         // GameObject child = spawnpos.transform.Find("flag").gameObject;
         // Debug.Log();
         // Debug.Log("ああああ");
-        Debug.Log(red);
+        // Debug.Log(red);
 
-        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
-        //    mng.GetComponent<scoreboard>().isred = true;
-            cam.GetComponent<color>().isred = true;
-            // Debug.Log("aaaaaaa"); 
-        }
-        if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
-        //    mng.GetComponent<scoreboard>().isblue = true; 
-            cam.GetComponent<color>().isblue = true; 
-        }
+
+        // }
     }
 
     

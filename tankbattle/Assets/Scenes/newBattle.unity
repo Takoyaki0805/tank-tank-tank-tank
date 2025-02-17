@@ -188,6 +188,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+--- !u!1 &17818040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+  m_PrefabInstance: {fileID: 17818039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &20380625
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2183,6 +2188,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
+  empty: 
+  Wherespawn:
+  - {fileID: 748383072}
+  - {fileID: 17818040}
 --- !u!114 &583528519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7637,6 +7646,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+--- !u!1 &748383072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+  m_PrefabInstance: {fileID: 748383071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &754236713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -10950,6 +10964,7 @@ GameObject:
   - component: {fileID: 1743914392}
   - component: {fileID: 1743914393}
   - component: {fileID: 1743914394}
+  - component: {fileID: 1743914395}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11101,6 +11116,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isred: 0
   isblue: 0
+--- !u!114 &1743914395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743914388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac338fd701e39a544babfcf3c02de6f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnpos: {fileID: 0}
 --- !u!82 &1746200927
 AudioSource:
   m_ObjectHideFlags: 0
