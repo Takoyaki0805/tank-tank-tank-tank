@@ -21,7 +21,9 @@ public class alive : NetworkBehaviour
     {
         life = maxlife;
         cam = GameObject.FindWithTag("MainCamera");
+        if(IsHost){
         networklife.Value = maxlife;
+        }
     }
 
     // Update is called once per frame
