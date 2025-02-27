@@ -2153,6 +2153,7 @@ GameObject:
   - component: {fileID: 583528520}
   - component: {fileID: 583528521}
   - component: {fileID: 583528522}
+  - component: {fileID: 583528523}
   m_Layer: 0
   m_Name: Spawnmanager
   m_TagString: spawnMNG
@@ -2188,7 +2189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  empty: 
+  empty: 0101
   Wherespawn:
   - {fileID: 748383072}
   - {fileID: 17818040}
@@ -2269,6 +2270,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   ready: {fileID: 1286746894}
+--- !u!114 &583528523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583528516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be368b752fd0a4148b1a7d287c0f26b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ready: {fileID: 583528516}
 --- !u!1 &591966787
 GameObject:
   m_ObjectHideFlags: 0
@@ -10963,8 +10977,6 @@ GameObject:
   - component: {fileID: 1743914389}
   - component: {fileID: 1743914392}
   - component: {fileID: 1743914393}
-  - component: {fileID: 1743914394}
-  - component: {fileID: 1743914395}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11102,33 +11114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b37c7ed04aa978f4f9229c415f2a3892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1743914394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743914388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d8179ecd856ebc4599a236be5575904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isred: 0
-  isblue: 0
---- !u!114 &1743914395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1743914388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac338fd701e39a544babfcf3c02de6f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnpos: {fileID: 0}
 --- !u!82 &1746200927
 AudioSource:
   m_ObjectHideFlags: 0

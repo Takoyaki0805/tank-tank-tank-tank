@@ -83,14 +83,14 @@ public class alive : NetworkBehaviour
 
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
         GameObject mn = GameObject.FindGameObjectWithTag("spawnMNG");
-        if(IsOwner&&cam.GetComponent<color>().isred){
+        if(IsOwner&&this.gameObject.GetComponent<color>().isred){
             if(IsHost){
                 mn.GetComponent<scoreboard>().redscore();
             }else{
                 mn.GetComponent<scoreboard>().redscoreRpc();
             }
         }
-        if(IsOwner&&cam.GetComponent<color>().isblue){
+        if(IsOwner&&this.gameObject.GetComponent<color>().isblue){
             if(IsHost){
                 mn.GetComponent<scoreboard>().bluescore();
             }else{

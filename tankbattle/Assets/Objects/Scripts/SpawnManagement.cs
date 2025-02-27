@@ -2,7 +2,7 @@ using UnityEngine;
 using System;
 using Unity.Netcode;
 
-public class SpawnMangement : NetworkBehaviour
+public class SpawnManagement : NetworkBehaviour
 {
     GameObject[] anthor;
     public bool[] empty;
@@ -40,7 +40,7 @@ public class SpawnMangement : NetworkBehaviour
             on = false;
     }
 
-    public GameObject playerattach(){
+    public int playerattach(){
         // GameObject g = null;
         bool escaped = false;
         // Debug.Log(escaped);
@@ -52,11 +52,15 @@ public class SpawnMangement : NetworkBehaviour
             }
         }
         Debug.Log(sIndex);  
-        return Wherespawn[sIndex];
+        return sIndex;
     }
     [Rpc(SendTo.Server)]
     public void SpawnchkRpc(){
         playerattach();
+    }
+
+    public GameObject getObj(int num){
+        return Wherespawn[num];
     }
 
     public void spawnout(GameObject g){

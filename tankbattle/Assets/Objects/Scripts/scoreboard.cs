@@ -17,6 +17,10 @@ public class scoreboard : NetworkBehaviour
     public GameObject cam;
     public GameObject main;
     public int maxscore = 1;
+
+    bool r = false;
+    bool b = false;
+
     private NetworkVariable<int> redteam = new NetworkVariable<int>(
         1,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
@@ -53,11 +57,29 @@ public class scoreboard : NetworkBehaviour
             win.SetActive(true);
             main.SetActive(false);
             cam.GetComponent<button>().fbuttonswitch();
-            if(redteam.Value == 0&&cam.GetComponent<color>().isred){
+            
+            GameObject[] group = GameObject.FindGameObjectsWithTag("Player");
+            foreach(GameObject g in group){
+                Debug.Log(g);
+                if(g.name == "tank"||g.name == "tank(Clone)"){
+                if(g.GetComponent<NetworkObject>().IsOwner){
+                    r = g.GetComponent<color>().isred; 
+                    b = g.GetComponent<color>().isblue;
+                }
+                }
+            }
+
+
+
+
+
+
+
+            if(redteam.Value == 0&&r){
                 win.SetActive(false);
                 lose.SetActive(true);
             }
-            if(blueteam.Value == 0&&cam.GetComponent<color>().isblue){
+            if(blueteam.Value == 0&&b){
                 win.SetActive(false);
                 lose.SetActive(true);
             }            
