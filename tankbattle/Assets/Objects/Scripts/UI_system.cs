@@ -19,7 +19,7 @@ public class UIsys : NetworkBehaviour
     public TMP_Text txt;
     public Slider hpbar;
     public Slider chargebar;
-    GameObject g;
+    GameObject obj;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,15 +33,15 @@ public class UIsys : NetworkBehaviour
     {
         try{
             // if(IsOwner){
-                g = tar.transform.parent.parent.gameObject;
+                obj = tar.transform.parent.parent.gameObject;
             // }
         }catch(NullReferenceException e){
             return;
         }catch(MissingReferenceException e){
             return;
         }
-        code = g.GetComponent<FireNet>();
-        hpcode = g.GetComponent<alive>();
+        code = obj.GetComponent<FireNet>();
+        hpcode = obj.GetComponent<alive>();
             // if(IsOwner){
                 bullet = code.havbullet;
                 mine = code.havmine;

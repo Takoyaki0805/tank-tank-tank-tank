@@ -4,7 +4,6 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
-
 public class SelectJoin : MonoBehaviour
 {
     public NetworkManager net;

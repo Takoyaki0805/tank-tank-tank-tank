@@ -1,15 +1,15 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class alive : NetworkBehaviour
+public class Player_life : NetworkBehaviour
 {
     public int maxlife = 100;
     public int life;
-    public GameObject dea;
-    bool onetime = true;
-    GameObject cam;
+    public GameObject deadObject;
+    bool isOnetime = true;
+    GameObject camera;
     public ParticleSystem particle;
-    public GameObject[] tankpolygon;
+    public GameObject[] tankPolygon;
     // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NetworkVariable<int> networklife = new NetworkVariable<int>(
@@ -20,7 +20,7 @@ public class alive : NetworkBehaviour
     void Start()
     {
         life = maxlife;
-        cam = GameObject.FindWithTag("MainCamera");
+        camera = GameObject.FindWithTag("MainCamera");
         if(IsHost){
         networklife.Value = maxlife;
         }
@@ -30,9 +30,9 @@ public class alive : NetworkBehaviour
     void Update()
     {
         life = networklife.Value;
-        if(life<=0&&onetime){
-            isGameOver();
-            onetime = false;
+        if(life<=0&&isOnetime){
+            IsGameOver();
+            isOnetime = false;
         }
     }
 
@@ -42,9 +42,9 @@ public class alive : NetworkBehaviour
             life -= c.gameObject.GetComponent<bulletmove>().atk;
             networklife.Value = life;
         }
-        if(life<=0&&onetime){
-            isGameOver();
-            onetime = false;
+        if(life<=0&&isOnetime){
+            IsGameOver();
+            isOnetime = false;
         }
     }
 
@@ -59,13 +59,13 @@ public class alive : NetworkBehaviour
             life -= c.gameObject.GetComponent<minedmg>().atk;
             networklife.Value = life;
         }
-        if(life<=0&&onetime){
-            isGameOver();
-            onetime = false;
+        if(life<=0&&isOnetime){
+            IsGameOver();
+            isOnetime = false;
         }
     }    
 
-    void isGameOver(){
+    void IsGameOver(){
             // パーティクルシステムのインスタンスを生成する。
 			ParticleSystem newParticle = Instantiate(particle);
 			// パーティクルの発生場所をこのスクリプトをアタッチしているGameObjectの場所にする。
@@ -77,34 +77,29 @@ public class alive : NetworkBehaviour
 			Destroy(newParticle.gameObject, 5.0f);
         // GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
         // this.transform.localScale = Vector3.zero;
-        foreach (GameObject g in tankpolygon){
-            g.gameObject.layer = LayerMask.NameToLayer("Unseen");
+        foreach (GameObject gameObject in tank_polygon){
+            gameObject.gameObject.layer = LayerMask.NameToLayer("Unseen");
         }
 
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-        GameObject mn = GameObject.FindGameObjectWithTag("spawnMNG");
+        GameObject manager = GameObject.FindGameObjectWithTag("spawnMNG");
         if(IsOwner&&this.gameObject.GetComponent<color>().isred){
             if(IsHost){
-                mn.GetComponent<scoreboard>().redscore();
+                manager.GetComponent<scoreboard>().redscore();
             }else{
-                mn.GetComponent<scoreboard>().redscoreRpc();
+                manager.GetComponent<scoreboard>().redscoreRpc();
             }
         }
         if(IsOwner&&this.gameObject.GetComponent<color>().isblue){
             if(IsHost){
-                mn.GetComponent<scoreboard>().bluescore();
+                manager.GetComponent<scoreboard>().bluescore();
             }else{
-                mn.GetComponent<scoreboard>().bluescoreRpc();
+                manager.GetComponent<scoreboard>().bluescoreRpc();
             }            
         }
-        // cam.GetComponent<playersheel>().sheel();
-        // this.gameObject.SetActive(false);
-        // cam.SetActive(false);
-        // cam.transform.parent = d.transform;
-        // cam.transform.localPosition = Vector3.up*5f;
     }
 
-    void isone(){
-        onetime = true;
+    void DoOnetime(){
+        isOnetime = true;
     }
 }

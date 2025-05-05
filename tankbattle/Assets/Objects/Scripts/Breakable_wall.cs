@@ -1,13 +1,13 @@
 using UnityEngine;
 
-public class breakablewall : MonoBehaviour
+public class Breakable_wall : MonoBehaviour
 {
-    public AudioClip sound1;
-    AudioSource audioSource;
+    public AudioClip sound;
+    AudioSource audio_source;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        audioSource = this.gameObject.GetComponent<AudioSource>();
+        audio_source = this.gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -18,9 +18,8 @@ public class breakablewall : MonoBehaviour
 
     void OnTriggerEnter(Collider c){
         if(c.gameObject.tag=="mineatkzone"){
-            audioSource.PlayOneShot(sound1);
+            audio_source.PlayOneShot(sound);
             Destroy(this.gameObject);
-            // life -= c.gameObject.GetComponent<minedmg>().atk;
         }
     }
 }

@@ -9,7 +9,7 @@ using Unity.Netcode;
 public class NewMove : Move
 {
     public GameObject obj;
-    Vector2 m;
+    Vector2 move_value;
     InputAction key;
     public GameObject fuc;
     public GameObject spawnpos;
@@ -44,17 +44,17 @@ public class NewMove : Move
         //     cam.GetComponent<color>().isblue = true; 
         // }
 
-        m = key.ReadValue<Vector2>();
+        move_value = key.ReadValue<Vector2>();
         if(IsOwner&&ablemove){
-            // moveServerRpc(m);
-            // Rig.linearVelocity = new Vector3(m.x*speed,0f,m.y*speed);
-            if(m.x!=0){
-                Rig.linearVelocity = tar.transform.forward*Math.Abs(m.x)*speed;
-                tar.transform.eulerAngles += new Vector3(0,m.x*speed*50*Time.deltaTime,0);
+            // moveServerRpc(move_value);
+            // Rig.linearVelocity = new Vector3(move_value.x*speed,0f,move_value.y*speed);
+            if(move_value.x!=0){
+                Rig.linearVelocity = tar.transform.forward*Math.Abs(move_value.x)*speed;
+                tar.transform.eulerAngles += new Vector3(0,move_value.x*speed*50*Time.deltaTime,0);
                 // Debug.Log("a");
             // Debug.Log(Time.deltaTime);
             }else{
-                Rig.linearVelocity = tar.transform.forward*m.y*speed;
+                Rig.linearVelocity = tar.transform.forward*move_value.y*speed;
                 // Debug.Log("i");
             }
         }

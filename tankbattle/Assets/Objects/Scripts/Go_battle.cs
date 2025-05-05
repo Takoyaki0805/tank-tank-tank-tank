@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class gobattle : MonoBehaviour
+public class Go_battle : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,7 +15,7 @@ public class gobattle : MonoBehaviour
         
     }
 
-    public void go(){ 
+    public void Go(){ 
         // SceneManager.LoadScene("Battle Stage");
         SceneManager.LoadScene("newBattle");
     }

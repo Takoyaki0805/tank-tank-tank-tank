@@ -41,8 +41,8 @@ public class wheel : NetworkBehaviour
     //     Debug.Log("in");
     // }
 
-    void wheelline(Vector3 pos){
-        GameObject spob = Instantiate (obj,pos,Quaternion.Euler(this.transform.localEulerAngles));
+    void wheelline(Vector3 position){
+        GameObject spob = Instantiate (obj,position,Quaternion.Euler(this.transform.localEulerAngles));
         // NetworkObject f = h.GetComponent<NetworkObject>();
         spob.GetComponent<NetworkObject>().Spawn();
         // spob.transform.localEulerAngles = this.transform.localEulerAngles;
@@ -52,7 +52,7 @@ public class wheel : NetworkBehaviour
     
 
     [Rpc(SendTo.Server)]
-    public void wheellineRpc(Vector3 pos){
-        wheelline(pos);
+    public void wheellineRpc(Vector3 position){
+        wheelline(position);
     }   
 }

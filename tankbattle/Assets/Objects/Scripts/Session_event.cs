@@ -6,9 +6,7 @@ using System;
 using System.Threading.Tasks;
 using Unity.Services.Authentication;
 
-
-
-public class ReadySet : NetworkBehaviour
+public class Session_event : NetworkBehaviour
 {
     [SerializeField]GameObject ready;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -23,40 +21,30 @@ public class ReadySet : NetworkBehaviour
         
     }
 
-    public void boot(){
+    public void PlayerBoot(){
         ready.SetActive(true);
     }
 
     public void stopnet(){
         GameObject net = GameObject.FindWithTag("NET");
         Destroy(net);
-        leave();
+        LeaveSession();
         NetworkManager.Singleton.Shutdown();
         SceneManager.LoadScene("NewMatch");
     }
 
-    async Task leave(){
+    async Task LeaveSession(){
         try
         {
                     //Ensure you sign-in before calling Authentication Instance
                     //See IAuthenticationService interface
-                    string playerId = AuthenticationService.Instance.PlayerId;
-                    var lobbyId = await LobbyService.Instance.GetJoinedLobbiesAsync();
-                    await LobbyService.Instance.RemovePlayerAsync(lobbyId[0], playerId);
+                    string player_id = AuthenticationService.Instance.PlayerId;
+                    var lobby_id = await LobbyService.Instance.GetJoinedLobbiesAsync();
+                    await LobbyService.Instance.RemovePlayerAsync(lobby_id[0], player_id);
         }
         catch (LobbyServiceException e)
         {
-                    Debug.Log(e);
+            Debug.Log(e);
         }
     }
-
-
-    // private void OnServerStoped(){
-    //     stopnet();
-    // }
-
-    // void OnNetworkSpawn()
-    // {
-    //     ready.SetActive(true);
-    // }
 }
