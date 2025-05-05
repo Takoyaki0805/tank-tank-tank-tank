@@ -6,20 +6,20 @@ using System;
 
 public class UIsys : NetworkBehaviour
 {
-    public GameObject tar;
-    public GameObject[] mark;
-    int bullet = 0;
-    int mine = 0; 
-    int maxhp = 0;
-    int hp = 0;
-    float bulletcharge = 0f;
-    float nowbulletcharge = 0f;
-    public FireNet code;
-    public alive hpcode;
+    public GameObject ui_target;
+    public GameObject[] bullet_mark;
+    int player_bullet = 0;
+    int player_mine = 0; 
+    int player_maxhp = 0;
+    int player_hp = 0;
+    float bullet_charge = 0f;
+    float charge_time = 0f;
+    public FireNet data_source;
+    public Player_life hp_data_source;
     public TMP_Text txt;
     public Slider hpbar;
-    public Slider chargebar;
-    GameObject obj;
+    public Slider bullet_charge_bar;
+    GameObject ui_obj;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,40 +33,40 @@ public class UIsys : NetworkBehaviour
     {
         try{
             // if(IsOwner){
-                obj = tar.transform.parent.parent.gameObject;
+                ui_obj = ui_target.transform.parent.parent.gameObject;
             // }
         }catch(NullReferenceException e){
             return;
         }catch(MissingReferenceException e){
             return;
         }
-        code = obj.GetComponent<FireNet>();
-        hpcode = obj.GetComponent<alive>();
+        data_source = ui_obj.GetComponent<FireNet>();
+        hp_data_source = ui_obj.GetComponent<alive>();
             // if(IsOwner){
-                bullet = code.havbullet;
-                mine = code.havmine;
-                nowbulletcharge = code.chargetime;
-                bulletcharge = code.bulletcharge;
-                hp = hpcode.life;
-                maxhp = hpcode.maxlife;
-                hpbar.value = (float)hp/(float)maxhp;
-                chargebar.value = (float)nowbulletcharge/(float)bulletcharge;
+                player_bullet = data_source.havbullet;
+                player_mine = data_source.havmine;
+                charge_time = data_source.chargetime;
+                bullet_charge = data_source.bulletcharge;
+                player_hp = hp_data_source.life;
+                player_maxhp = hp_data_source.maxlife;
+                hpbar.value = (float)player_hp/(float)player_maxhp;
+                bullet_charge_bar.value = (float)charge_time/(float)bullet_charge;
                 // Debug.Log(hp/maxhp);
-                if(bullet==0){
-                    foreach(GameObject j in mark){
+                if(player_bullet==0){
+                    foreach(GameObject j in bullet_mark){
                         j.SetActive(false);
                     }
                 }
-                if(bullet==1){
-                    mark[0].SetActive(true);
-                    mark[1].SetActive(false);
+                if(player_bullet==1){
+                    bullet_mark[0].SetActive(true);
+                    bullet_mark[1].SetActive(false);
                 }
-                if(bullet==2){
-                    foreach(GameObject j in mark){
+                if(player_bullet==2){
+                    foreach(GameObject j in bullet_mark){
                         j.SetActive(true);
                     }
                 }
-                txt.SetText(mine+"");
+                txt.SetText(player_mine+"");
             // }   
     }
 }

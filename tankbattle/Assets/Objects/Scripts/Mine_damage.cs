@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class minedmg : MonoBehaviour
+public class Mine_damage : MonoBehaviour
 {
-    public int atk = 100;
+    public int mine_atk = 100;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Readypipe : MonoBehaviour
+public class Ready_event : MonoBehaviour
 {
     public GameObject ready;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -16,6 +16,6 @@ public class Readypipe : MonoBehaviour
     }
 
     public void showready(){
-        ready.GetComponent<ReadySet>().boot();
+        ready.GetComponent<Button_sheel>().GetReady();
     }
 }

@@ -5,28 +5,28 @@ using System;
 using UnityEngine.UI;
 
 
-public class scoreboard : NetworkBehaviour
+public class Score_Board : NetworkBehaviour
 {
-    public TMP_Text redtxt;
-    public TMP_Text bluetxt;
-    public bool isred = false;
-    public bool isblue = false;
-    public GameObject can;
-    public GameObject win;
-    public GameObject lose;
-    public GameObject cam;
+    public TMP_Text red_txt;
+    public TMP_Text blue_txt;
+    public bool IsRedTeam = false;
+    public bool IsBlueTeam = false;
+    public GameObject canvas;
+    public GameObject win_txt;
+    public GameObject lose_txt;
+    public GameObject camera;
     public GameObject main;
-    public int maxscore = 1;
+    public int max_score = 1;
 
-    bool r = false;
-    bool b = false;
+    bool IsRed = false;
+    bool IsBlue = false;
 
-    private NetworkVariable<int> redteam = new NetworkVariable<int>(
+    private NetworkVariable<int> red_team_menber = new NetworkVariable<int>(
         1,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Server        // 書き込み権限
     );
-    private NetworkVariable<int> blueteam = new NetworkVariable<int>(
+    private NetworkVariable<int> blue_team_menber = new NetworkVariable<int>(
         1,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Server        // 書き込み権限
@@ -34,37 +34,37 @@ public class scoreboard : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        can.SetActive(false);
-        win.SetActive(false);
-        lose.SetActive(false);
+        canvas.SetActive(false);
+        win_txt.SetActive(false);
+        lose_txt.SetActive(false);
         if(IsHost){
-            resetscore();
+            ResetScore();
         }else{
             // resetscoreRpc();
         }
-        redtxt.SetText(redteam.Value.ToString());
-        bluetxt.SetText(blueteam.Value.ToString());
+        red_txt.SetText(red_team_menber.Value.ToString());
+        blue_txt.SetText(blue_team_menber.Value.ToString());
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        redtxt.SetText(redteam.Value.ToString());
-        bluetxt.SetText(blueteam.Value.ToString());
-        if(redteam.Value == 0||blueteam.Value == 0){
-            can.SetActive(true);
-            win.SetActive(true);
+        red_txt.SetText(red_team_menber.Value.ToString());
+        blue_txt.SetText(blue_team_menber.Value.ToString());
+        if(red_team_menber.Value == 0||blue_team_menber.Value == 0){
+            canvas.SetActive(true);
+            win_txt.SetActive(true);
             main.SetActive(false);
-            cam.GetComponent<button>().fbuttonswitch();
+            camera.GetComponent<button>().fbuttonswitch();
             
             GameObject[] group = GameObject.FindGameObjectsWithTag("Player");
             foreach(GameObject g in group){
                 Debug.Log(g);
                 if(g.name == "tank"||g.name == "tank(Clone)"){
                 if(g.GetComponent<NetworkObject>().IsOwner){
-                    r = g.GetComponent<color>().isred; 
-                    b = g.GetComponent<color>().isblue;
+                    IsRed = g.GetComponent<color>().isred; 
+                    IsBlue = g.GetComponent<color>().isblue;
                 }
                 }
             }
@@ -75,43 +75,43 @@ public class scoreboard : NetworkBehaviour
 
 
 
-            if(redteam.Value == 0&&r){
-                win.SetActive(false);
-                lose.SetActive(true);
+            if(red_team_menber.Value == 0&&IsRed){
+                win_txt.SetActive(false);
+                lose_txt.SetActive(true);
             }
-            if(blueteam.Value == 0&&b){
-                win.SetActive(false);
-                lose.SetActive(true);
+            if(blue_team_menber.Value == 0&&IsBlue){
+                win_txt.SetActive(false);
+                lose_txt.SetActive(true);
             }            
         }    
     }
 
-    public void redscore(){
-        redteam.Value = redteam.Value -1;
+    public void RedScore(){
+        red_team_menber.Value = red_team_menber.Value -1;
     }
 
-    public void bluescore(){
-        blueteam.Value = blueteam.Value -1;
+    public void BlueScore(){
+        blue_team_menber.Value = blue_team_menber.Value -1;
     }
 
     [Rpc(SendTo.Server)]
-    public void redscoreRpc(){
-        redscore();
+    public void RedScoreRpc(){
+        RedScore();
     }    
 
     [Rpc(SendTo.Server)]
-    public void bluescoreRpc(){
-        bluescore();
+    public void BlueScoreRpc(){
+        BlueScore();
     } 
 
-    public void resetscore(){
-        redteam.Value = maxscore;
-        blueteam.Value = maxscore;
+    public void ResetScore(){
+        red_team_menber.Value = max_score;
+        blue_team_menber.Value = max_score;
     }
 
     [Rpc(SendTo.Server)]
-    public void resetscoreRpc(){
-        resetscore();
+    public void ResetScoreRpc(){
+        ResetScore();
     }   
     
 }

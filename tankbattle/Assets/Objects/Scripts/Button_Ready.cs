@@ -2,7 +2,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
-public class button : MonoBehaviour
+public class Button_Ready : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -16,14 +16,14 @@ public class button : MonoBehaviour
         
     }
 
-    public void buttonswitch(){
-        GameObject tar = this.gameObject.transform.parent.parent.gameObject;
-        tar.GetComponent<playersheel>().button();
+    public void ButtonSwitch(){
+        GameObject target = this.gameObject.transform.parent.parent.gameObject;
+        target.GetComponent<playersheel>().button();
     }
 
-    public void fbuttonswitch(){
-        GameObject tar = this.gameObject.transform.parent.parent.gameObject;
-        tar.GetComponent<playersheel>().fbutton();
+    public void ButtonSwitchFalse(){
+        GameObject target = this.gameObject.transform.parent.parent.gameObject;
+        target.GetComponent<playersheel>().fbutton();
     }
 
 

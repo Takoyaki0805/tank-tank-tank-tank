@@ -6,19 +6,19 @@ using Unity.Netcode;
 
 public class mousemove : MonoBehaviour
 {
-    public GameObject tar;
-    public GameObject cam;
-    public GameObject atk;
+    public GameObject target;
+    public GameObject camera;
+    public GameObject attack;
     public float speed;
 
     // Start is called before the first frame update
     void Start()
     {
         // if(IsOwner){
-            cam = GameObject.FindWithTag("MainCamera");
+            camera = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            cam.transform.position = atk.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
-            cam.transform.parent = tar.transform;
+            camera.transform.position = attack.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
+            camera.transform.parent = target.transform;
         // }
     }
 
@@ -35,8 +35,8 @@ public class mousemove : MonoBehaviour
         }
         
         // if(IsOwner){
-            atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            cam.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            attack.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            camera.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
             // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
             // aroundServerRpc(h);
             // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
@@ -46,7 +46,7 @@ public class mousemove : MonoBehaviour
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){
-        cam = GameObject.FindWithTag("MainCamera");        
+        camera = GameObject.FindWithTag("MainCamera");        
     }
 
     void Awake(){

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class Move : NetworkBehaviour
+public class Player_move : NetworkBehaviour
 {
     public float speed = 1.0f;
     public Rigidbody Rig;

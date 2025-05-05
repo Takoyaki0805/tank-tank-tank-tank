@@ -2,17 +2,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
 
-public class Buttondisable : NetworkBehaviour
+public class Button_sheel : NetworkBehaviour
 {
     private NetworkVariable<int> networkint = new NetworkVariable<int>(
         0,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Server        // 書き込み権限
     );
-    public Button tar;
-    bool ready = false;
-    public GameObject cam;
-    // int c = 0;
+    public Button target_button;
+    bool IsReady = false;
+    public GameObject camera;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -22,35 +21,35 @@ public class Buttondisable : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(networkint.Value >= 2 && !ready){
+        if(networkint.Value >= 2 && !IsReady){
             // tar.interactable = true;
-            try{Destroy(tar.gameObject);}
+            try{Destroy(target_button.gameObject);}
             catch (MissingReferenceException e){
 
             }
-            ready = true;
+            IsReady = true;
         }
-        if(ready){
-            GameObject tar = cam.gameObject.transform.parent.parent.gameObject;
-            tar.GetComponent<playersheel>().button();
+        if(IsReady){
+            GameObject target = camera.gameObject.transform.parent.parent.gameObject;
+            target.GetComponent<playersheel>().button();
         }
     }
 
-    public void getready(){
-        tar.interactable = false;
+    public void GetReady(){
+        target_button.interactable = false;
         if(IsHost){
-            count();
+            ReadyCount();
         }else{
-            countRpc();
+            ReadyCountRpc();
         }
     } 
 
-    public void count(){
+    public void ReadyCount(){
         networkint.Value = networkint.Value + 1;
     }
 
     [Rpc(SendTo.Server)]
-    public void countRpc(){
-        count();
+    public void ReadyCountRpc(){
+        ReadyCount();
     }
 }

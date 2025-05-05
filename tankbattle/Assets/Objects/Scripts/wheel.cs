@@ -1,12 +1,12 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class wheel : NetworkBehaviour
+public class Wheel : NetworkBehaviour
 {
-    public GameObject obj;
+    public GameObject wheel_object;
     // bool Isstay = true;
     public float timer;
-    public bool wheelable = false;
+    public bool IsWheelable = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +16,7 @@ public class wheel : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(wheelable){
+        if(IsWheelable){
             timer += Time.deltaTime;
             if(0.35f<=timer){
                 if(IsHost){
@@ -29,22 +29,10 @@ public class wheel : NetworkBehaviour
         }
     }
 
-    // void  OnTriggerExit(Collider c){
-    //     if(Isstay){
-
-    //     }
-    //     Isstay = true;
-    // }
-
-    // void OnTriggerEnter(Collider c){
-    //     Isstay = false;
-    //     Debug.Log("in");
-    // }
-
-    void wheelline(Vector3 position){
-        GameObject spob = Instantiate (obj,position,Quaternion.Euler(this.transform.localEulerAngles));
+    void WheelLine(Vector3 position){
+        GameObject spawn_wheel_line = Instantiate (wheel_object,position,Quaternion.Euler(this.transform.localEulerAngles));
         // NetworkObject f = h.GetComponent<NetworkObject>();
-        spob.GetComponent<NetworkObject>().Spawn();
+        spawn_wheel_line.GetComponent<NetworkObject>().Spawn();
         // spob.transform.localEulerAngles = this.transform.localEulerAngles;
         // Debug.Log("でた");
     }
@@ -52,7 +40,7 @@ public class wheel : NetworkBehaviour
     
 
     [Rpc(SendTo.Server)]
-    public void wheellineRpc(Vector3 position){
-        wheelline(position);
+    public void WheelLineRpc(Vector3 position){
+        WheelLine(position);
     }   
 }

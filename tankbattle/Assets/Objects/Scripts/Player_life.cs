@@ -77,8 +77,8 @@ public class Player_life : NetworkBehaviour
 			Destroy(newParticle.gameObject, 5.0f);
         // GameObject d = Instantiate(dea,this.transform.position,Quaternion.EulerAngles(this.transform.localEulerAngles));
         // this.transform.localScale = Vector3.zero;
-        foreach (GameObject gameObject in tank_polygon){
-            gameObject.gameObject.layer = LayerMask.NameToLayer("Unseen");
+        foreach (GameObject g in tank_polygon){
+            g.gameObject.layer = LayerMask.NameToLayer("Unseen");
         }
 
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");

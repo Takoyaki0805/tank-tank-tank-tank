@@ -5,19 +5,17 @@ using UnityEngine.SceneManagement;
 using Unity.Netcode;
 using UnityEngine.InputSystem;
 
-public class mousemoveNet : NetworkBehaviour
+public class Mouse_move_net : NetworkBehaviour
 {
-    public GameObject tar;
-    public GameObject cam;
-    public GameObject atk;
+    public GameObject target;
+    public GameObject camera;
+    public GameObject player_attack_value;
     public float speed;
     InputAction key;
-    Vector2 m;
-    public bool ablecameramove = false;
+    Vector2 move_value;
+    public bool AbleCameraMove = false;
 
-    // float movep; 
-    float deltaCA;
-        private NetworkVariable<float> movep = new NetworkVariable<float>(
+    private NetworkVariable<float> move_point = new NetworkVariable<float>(
         0f,                                          // 初期値
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Owner        // 書き込み権限
@@ -26,84 +24,54 @@ public class mousemoveNet : NetworkBehaviour
     void Start()
     {
         if(IsOwner){
-            cam = GameObject.FindWithTag("MainCamera");
+            camera = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            cam.transform.position = atk.transform.position + Vector3.back*4.2f +Vector3.up*2f;
-            cam.transform.parent = tar.transform;
+            camera.transform.position = player_attack_value.transform.position + Vector3.back*4.2f +Vector3.up*2f;
+            camera.transform.parent = target.transform;
         }
         var Input = this.gameObject.GetComponent<PlayerInput>();
-        // if(IsOwner){
         key = Input.actions["camera"];
     }
 
     // Update is called once per frame
     void Update()
     {
-        float mh = Input.GetAxis("Mouse X");
-        float h = 0;
-        m = key.ReadValue<Vector2>();
+        float mouse_value = Input.GetAxis("Mouse X");
+        float mouse_move_max = 0;
+        move_value = key.ReadValue<Vector2>();
         // Debug.Log(h);
-        if(ablecameramove){
-            if(mh>0){
-                h=3f;
+        if(AbleCameraMove){
+            if(mouse_value>0){
+                mouse_move_max=3f;
             }
-            if(mh<0){
-                h=-3f;
+            if(mouse_value<0){
+                mouse_move_max=-3f;
             }
-            if(mh<0.1&&mh>-0.1){
-                h=0;
+            if(mouse_value<0.1&&mouse_value>-0.1){
+                mouse_move_max=0;
             }else{
-                h=mh;
+                mouse_move_max=mouse_value;
             }
-            // Debug.Log("h="+h+"mh="+mh);
-            
-            // movep = h*Time.deltaTime*speed;
             if(IsOwner){
-                if(m.x!=0){
-                    movep.Value = m.x*Time.deltaTime*speed/3.5f;
+                if(move_value.x!=0){
+                    move_point.Value = move_value.x*Time.deltaTime*speed/3.5f;
                 }else{
-                    movep.Value = h*Time.deltaTime*speed;
+                    move_point.Value = mouse_move_max*Time.deltaTime*speed;
                 }
-                // Debug.Log(m.x);
-                // Debug.Log(movep.Value);
-
-                // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed);
-                // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
-                cam.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
-                atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
-
-                // aroundServerRpc(h);
-                // if(cam.transform.localEulerAngles.z!=atk.transform.localEulerAngles.z){
-                //     deltaCA = atk.transform.localEulerAngles.z - cam.transform.localEulerAngles.z;
-                // }
-
-                // Debug.Log(deltaCA);
-                // cam.transform.RotateAround (tar.transform.position, Vector3.up, deltaCA);
-
-                // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
-                // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
+                camera.transform.RotateAround (target.transform.position, Vector3.up, move_point.Value);
+                player_attack_value.transform.RotateAround (target.transform.position, Vector3.up, move_point.Value);
             }
         }
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){
-        cam = GameObject.FindWithTag("MainCamera");        
-    }
-
-    void Awake(){
+        camera = GameObject.FindWithTag("MainCamera");        
     }
 
     [Unity.Netcode.ServerRpc]
-    void aroundServerRpc(float h){
-        // atk.transform.RotateAround (tar.transform.position, Vector3.up, movep.Value);
-        return;
-    }
-
-    [Unity.Netcode.ServerRpc]
-    void turnServerRpc(Vector3 p,Vector3 l){
-        // atk.transform.RotateAround (tar.transform.position, Vector3.up, h*Time.deltaTime*speed*1000);
-        atk.transform.position = p;
-        atk.transform.localEulerAngles = l;
+    void TurnServerRpc(Vector3 p,Vector3 l){
+        player_attack_value.transform.position = p;
+        player_attack_value.transform.localEulerAngles = l;
         return;
     }
 }

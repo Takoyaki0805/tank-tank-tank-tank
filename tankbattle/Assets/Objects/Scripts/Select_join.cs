@@ -4,7 +4,7 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.SceneManagement;
 
-public class SelectJoin : MonoBehaviour
+public class Select_join : MonoBehaviour
 {
     public NetworkManager net;
     // Start is called before the first frame update

@@ -6,24 +6,24 @@ using UnityEngine.InputSystem;
 using Unity.Netcode;
 
 
-public class NewMove : Move
+public class Player_move_net : Player_move
 {
-    public GameObject obj;
+    public GameObject player_target;
     Vector2 move_value;
     InputAction key;
-    public GameObject fuc;
-    public GameObject spawnpos;
-    bool decidespawn = false;
-    public bool ablemove = false;
-    public Material red;
-    public Material blue;
-    GameObject mng;
-    GameObject cam;
+    public GameObject player_direction;
+    public GameObject spawn_position;
+    bool IsDecideSpawn = false;
+    public bool IsMove = false;
+    public Material red_material;
+    public Material blue_material;
+    GameObject manager;
+    GameObject camera;
 
     // Start is called before the first frame update
     void Start()
     {
-        var Input = obj.GetComponent<PlayerInput>();
+        var Input = player_target.GetComponent<PlayerInput>();
         // if(IsOwner){
         key = Input.actions["move"];
         // }
@@ -32,34 +32,15 @@ public class NewMove : Move
     // Update is called once per frame
     public void Update()
     {
-
-
-        // if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagred){
-        // //    mng.GetComponent<scoreboard>().isred = true;
-        //     cam.GetComponent<color>().isred = true;
-        //     // Debug.Log("aaaaaaa"); 
-        // }
-        // if(IsOwner&&spawnpos.GetComponent<flagcolor>().flagblue){
-        // //    mng.GetComponent<scoreboard>().isblue = true; 
-        //     cam.GetComponent<color>().isblue = true; 
-        // }
-
         move_value = key.ReadValue<Vector2>();
-        if(IsOwner&&ablemove){
-            // moveServerRpc(move_value);
-            // Rig.linearVelocity = new Vector3(move_value.x*speed,0f,move_value.y*speed);
+        if(IsOwner&&IsMove){
             if(move_value.x!=0){
                 Rig.linearVelocity = tar.transform.forward*Math.Abs(move_value.x)*speed;
                 tar.transform.eulerAngles += new Vector3(0,move_value.x*speed*50*Time.deltaTime,0);
-                // Debug.Log("a");
-            // Debug.Log(Time.deltaTime);
             }else{
                 Rig.linearVelocity = tar.transform.forward*move_value.y*speed;
-                // Debug.Log("i");
             }
         }
-
-        
     }
 
     void Awake(){

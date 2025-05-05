@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Fire : MonoBehaviour
+public class Fire_off : MonoBehaviour
 {
-    public GameObject obj;
-    public GameObject tar;
+    public GameObject bullet_object;
+    public GameObject target;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,9 +20,9 @@ public class Fire : MonoBehaviour
     }
 
     public void OnFire(InputAction.CallbackContext context){
-        Vector3 pos = tar.transform.position;
+        Vector3 position = target.transform.position;
         if(context.performed){
-            Instantiate (obj,pos,Quaternion.identity);
+            Instantiate (bullet_object,position,Quaternion.identity);
         }
     }
 }

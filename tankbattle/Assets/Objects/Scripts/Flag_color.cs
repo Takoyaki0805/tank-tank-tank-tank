@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class flagcolor : MonoBehaviour
+public class Flag_color : MonoBehaviour
 {
-    public bool flagred = false;
-    public bool flagblue = false;
+    public bool flag_red = false;
+    public bool flag_blue = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
