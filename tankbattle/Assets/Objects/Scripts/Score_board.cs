@@ -14,7 +14,7 @@ public class Score_board : NetworkBehaviour
     public GameObject canvas;
     public GameObject win_txt;
     public GameObject lose_txt;
-    public GameObject camera;
+    public GameObject cam;
     public GameObject main;
     public int max_score = 1;
 
@@ -56,7 +56,7 @@ public class Score_board : NetworkBehaviour
             canvas.SetActive(true);
             win_txt.SetActive(true);
             main.SetActive(false);
-            camera.GetComponent<Button_Ready>().ButtonSwitchFalse();
+            cam.GetComponent<Button_Ready>().ButtonSwitchFalse();
             
             GameObject[] group = GameObject.FindGameObjectsWithTag("Player");
             foreach(GameObject g in group){

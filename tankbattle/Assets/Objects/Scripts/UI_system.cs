@@ -17,7 +17,7 @@ public class UI_system : NetworkBehaviour
     public Fire_Net data_source;
     public Player_life hp_data_source;
     public TMP_Text txt;
-    public Slider hpbar;
+    public Slider hp_bar;
     public Slider bullet_charge_bar;
     GameObject ui_obj;
 
@@ -45,11 +45,11 @@ public class UI_system : NetworkBehaviour
             // if(IsOwner){
                 player_bullet = data_source.have_bullet;
                 player_mine = data_source.have_mine;
-                charge_time = data_source.charge_cooltime;
+                charge_time = data_source.bullet_chargetime;
                 bullet_charge = data_source.bullet_charge;
                 player_hp = hp_data_source.life;
                 player_maxhp = hp_data_source.maxlife;
-                hpbar.value = (float)player_hp/(float)player_maxhp;
+                hp_bar.value = (float)player_hp/(float)player_maxhp;
                 bullet_charge_bar.value = (float)charge_time/(float)bullet_charge;
                 // Debug.Log(hp/maxhp);
                 if(player_bullet==0){

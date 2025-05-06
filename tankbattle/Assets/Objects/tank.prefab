@@ -1053,7 +1053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   target: {fileID: 5236397363941150962}
-  camera: {fileID: 0}
+  cam: {fileID: 0}
   player_attack_value: {fileID: 98004432384538109}
   speed: 1000
   AbleCameraMove: 0
@@ -1139,7 +1139,7 @@ MonoBehaviour:
   bullet_charge: 5
   charge_cooltime: 1.5
   have_mine: 3
-  mine_chargetime: 0
+  bullet_chargetime: 0
   cooltime_timer: 1.5
   sound_file: {fileID: 8300000, guid: 2c43ec5b483ae3046b5c5a5447ce6624, type: 3}
   IsMine: 0
@@ -1198,7 +1198,18 @@ MonoBehaviour:
   life: 0
   deadObject: {fileID: 0}
   particle: {fileID: 19800002, guid: 3364c97de68d3a147af572d1c71c6455, type: 3}
-  tank_polygon: []
+  tank_polygon:
+  - {fileID: 5236397363941150962}
+  - {fileID: 1499713093507213898}
+  - {fileID: 1081245997928184527}
+  - {fileID: 5817889853736334474}
+  - {fileID: 1637186238886041053}
+  - {fileID: 7256519217166161503}
+  - {fileID: 7087451485798687509}
+  - {fileID: 2461017751884482655}
+  - {fileID: 7334530073232160142}
+  - {fileID: 98004432384538109}
+  - {fileID: 8033554926616995599}
 --- !u!82 &8188770074450776877
 AudioSource:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class Fire_Net : NetworkBehaviour
     public float bullet_charge = 5.0f;
     public float charge_cooltime = 1.5f;
     public int have_mine = 3;
-    public float mine_chargetime = 0f;
+    public float bullet_chargetime = 0f;
     public float cooltime_timer = 0f;
     public AudioClip sound_file;
     AudioSource audio_source;
@@ -36,16 +36,16 @@ public class Fire_Net : NetworkBehaviour
     void Update()
     {
         if(have_bullet!=maxbullet){
-            mine_chargetime += Time.deltaTime;
+            bullet_chargetime += Time.deltaTime;
             if(cooltime_timer<=charge_cooltime){
                 cooltime_timer = charge_cooltime;
             }else{
                 cooltime_timer += Time.deltaTime;
             }
-            mine_chargetime += Time.deltaTime;
-            if(mine_chargetime>=bullet_charge){
+            bullet_chargetime += Time.deltaTime;
+            if(bullet_chargetime>=bullet_charge){
                 have_bullet++;
-                mine_chargetime = 0f;
+                bullet_chargetime = 0f;
             }
         }
     }

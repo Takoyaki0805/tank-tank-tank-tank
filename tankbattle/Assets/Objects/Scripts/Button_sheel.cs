@@ -11,7 +11,7 @@ public class Button_sheel : NetworkBehaviour
     );
     public Button target_button;
     bool IsReady = false;
-    public GameObject camera;
+    public GameObject cam;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -30,7 +30,7 @@ public class Button_sheel : NetworkBehaviour
             IsReady = true;
         }
         if(IsReady){
-            GameObject target = camera.gameObject.transform.parent.parent.gameObject;
+            GameObject target = cam.gameObject.transform.parent.parent.gameObject;
             target.GetComponent<Player_sheel>().DecideButton();
         }
     }

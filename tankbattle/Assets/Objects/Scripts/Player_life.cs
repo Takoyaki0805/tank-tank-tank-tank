@@ -7,7 +7,7 @@ public class Player_life : NetworkBehaviour
     public int life;
     public GameObject deadObject;
     bool isOnetime = true;
-    GameObject camera;
+    GameObject cam;
     public ParticleSystem particle;
     public GameObject[] tank_polygon;
     // public int atk = 30;
@@ -20,7 +20,7 @@ public class Player_life : NetworkBehaviour
     void Start()
     {
         life = maxlife;
-        camera = GameObject.FindWithTag("MainCamera");
+        cam = GameObject.FindWithTag("MainCamera");
         if(IsHost){
         networklife.Value = maxlife;
         }

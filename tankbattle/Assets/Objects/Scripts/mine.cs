@@ -10,13 +10,13 @@ public class mine : NetworkBehaviour
     public float mine_pheseC=11.0f;
     public int mine_attack = 100;
     public GameObject bomb;
-    Animator animation;
+    Animator anim;
     public ParticleSystem particle;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        animation = this.gameObject.GetComponent<Animator>();
+        anim = this.gameObject.GetComponent<Animator>();
         bomb.SetActive(false);
     }
 
@@ -26,7 +26,7 @@ public class mine : NetworkBehaviour
         mine_timer += Time.deltaTime;
         // Debug.Log(pheseA);
         if(mine_timer>=mine_pheseA){
-            animation.SetBool("alarm",true);
+            anim.SetBool("alarm",true);
         }
         if(mine_timer>=mine_pheseB){
             bomb.SetActive(true);

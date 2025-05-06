@@ -6,7 +6,7 @@ public class Team_color : NetworkBehaviour
     public bool IsRed;
     public bool IsBlue;
     GameObject spawn_manage;
-    GameObject camera;
+    GameObject cam;
     public GameObject spawn_position;
     [SerializeField]int number;
     bool Isonetime = true;

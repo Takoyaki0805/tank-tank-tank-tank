@@ -2119,7 +2119,7 @@ MonoBehaviour:
   data_source: {fileID: 6089395833816949009, guid: be89c022579243946b9da87a9f923a7b, type: 3}
   hp_data_source: {fileID: 0}
   txt: {fileID: 1305840817}
-  hpbar: {fileID: 345171056}
+  hp_bar: {fileID: 345171056}
   bullet_charge_bar: {fileID: 1669562224}
 --- !u!64 &522948570
 MeshCollider:
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   target_button: {fileID: 1286746896}
-  camera: {fileID: 1743914388}
+  cam: {fileID: 1743914388}
 --- !u!114 &583528521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2257,7 +2257,7 @@ MonoBehaviour:
   canvas: {fileID: 2061195910}
   win_txt: {fileID: 1070347654}
   lose_txt: {fileID: 1093252890}
-  camera: {fileID: 1743914388}
+  cam: {fileID: 1743914388}
   main: {fileID: 501623633}
   max_score: 1
 --- !u!114 &583528522

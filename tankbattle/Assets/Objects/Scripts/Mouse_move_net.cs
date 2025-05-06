@@ -8,7 +8,7 @@ using UnityEngine.InputSystem;
 public class Mouse_move_net : NetworkBehaviour
 {
     public GameObject target;
-    public GameObject camera;
+    public GameObject cam;
     public GameObject player_attack_value;
     public float speed;
     InputAction key;
@@ -24,10 +24,10 @@ public class Mouse_move_net : NetworkBehaviour
     void Start()
     {
         if(IsOwner){
-            camera = GameObject.FindWithTag("MainCamera");
+            cam = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            camera.transform.position = player_attack_value.transform.position + Vector3.back*4.2f +Vector3.up*2f;
-            camera.transform.parent = target.transform;
+            cam.transform.position = player_attack_value.transform.position + Vector3.back*4.2f +Vector3.up*2f;
+            cam.transform.parent = target.transform;
         }
         var Input = this.gameObject.GetComponent<PlayerInput>();
         key = Input.actions["camera"];
@@ -58,14 +58,14 @@ public class Mouse_move_net : NetworkBehaviour
                 }else{
                     move_point.Value = mouse_move_max*Time.deltaTime*speed;
                 }
-                camera.transform.RotateAround (target.transform.position, Vector3.up, move_point.Value);
+                cam.transform.RotateAround (target.transform.position, Vector3.up, move_point.Value);
                 player_attack_value.transform.RotateAround (target.transform.position, Vector3.up, move_point.Value);
             }
         }
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){
-        camera = GameObject.FindWithTag("MainCamera");        
+        cam = GameObject.FindWithTag("MainCamera");        
     }
 
     [Unity.Netcode.ServerRpc]

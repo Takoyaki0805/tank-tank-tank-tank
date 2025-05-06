@@ -7,7 +7,7 @@ using Unity.Netcode;
 public class mousemove : MonoBehaviour
 {
     public GameObject target;
-    public GameObject camera;
+    public GameObject cam;
     public GameObject attack;
     public float speed;
 
@@ -15,10 +15,10 @@ public class mousemove : MonoBehaviour
     void Start()
     {
         // if(IsOwner){
-            camera = GameObject.FindWithTag("MainCamera");
+            cam = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
-            camera.transform.position = attack.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
-            camera.transform.parent = target.transform;
+            cam.transform.position = attack.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
+            cam.transform.parent = target.transform;
         // }
     }
 
@@ -36,7 +36,7 @@ public class mousemove : MonoBehaviour
         
         // if(IsOwner){
             attack.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            camera.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
+            cam.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
             // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
             // aroundServerRpc(h);
             // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
@@ -46,7 +46,7 @@ public class mousemove : MonoBehaviour
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){
-        camera = GameObject.FindWithTag("MainCamera");        
+        cam = GameObject.FindWithTag("MainCamera");        
     }
 
     void Awake(){

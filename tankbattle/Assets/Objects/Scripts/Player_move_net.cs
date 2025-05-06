@@ -18,7 +18,7 @@ public class Player_move_net : Player_move
     public Material red_material;
     public Material blue_material;
     GameObject manager;
-    GameObject camera;
+    GameObject cam;
 
     // Start is called before the first frame update
     void Start()
