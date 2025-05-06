@@ -19,15 +19,15 @@ public class Team_setting : MonoBehaviour
     public void SetTeam(){
         GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
         // cam = GameObject.FindGameObjectWithTag("MainCamera");
-        if(spawnPosition.GetComponent<flagcolor>().flagred&&isSetup){
+        if(spawnPosition.GetComponent<Flag_color>().flag_red&&isSetup){
         //    mng.GetComponent<scoreboard>().isred = true;
-            camera.GetComponent<color>().isred = true;
-            camera.GetComponent<color>().isblue = false;
+            camera.GetComponent<Team_color>().IsRed = true;
+            camera.GetComponent<Team_color>().IsBlue = false;
         }
-        if(spawnPosition.GetComponent<flagcolor>().flagblue&&isSetup){
+        if(spawnPosition.GetComponent<Flag_color>().flag_blue&&isSetup){
         //    mng.GetComponent<scoreboard>().isblue = true; 
-            camera.GetComponent<color>().isblue = true; 
-            camera.GetComponent<color>().isred = false;  
+            camera.GetComponent<Team_color>().IsBlue = true; 
+            camera.GetComponent<Team_color>().IsRed = false;  
         } 
         isSetup = false;
     }

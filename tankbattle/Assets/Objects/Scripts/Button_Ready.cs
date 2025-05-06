@@ -18,12 +18,12 @@ public class Button_Ready : MonoBehaviour
 
     public void ButtonSwitch(){
         GameObject target = this.gameObject.transform.parent.parent.gameObject;
-        target.GetComponent<playersheel>().button();
+        target.GetComponent<Player_sheel>().DecideButton();
     }
 
     public void ButtonSwitchFalse(){
         GameObject target = this.gameObject.transform.parent.parent.gameObject;
-        target.GetComponent<playersheel>().fbutton();
+        target.GetComponent<Player_sheel>().CancelButton();
     }
 
 

@@ -27,27 +27,27 @@ public class Player_sheel : NetworkBehaviour
     }
 
     public void OnSheel(){
-        target.GetComponent<NewMove>().ablemove = false;
-        target.GetComponent<FireNet>().ablefire = false;
-        target.GetComponent<FireNet>().ablemine = false;
-        target.GetComponent<mousemoveNet>().ablecameramove = false;
-        target.GetComponent<wheel>().wheelable = false;
+        target.GetComponent<Player_move_net>().IsMove = false;
+        target.GetComponent<Fire_Net>().IsFire = false;
+        target.GetComponent<Fire_Net>().IsMine = false;
+        target.GetComponent<Mouse_move_net>().AbleCameraMove = false;
+        target.GetComponent<Wheel>().IsWheelable = false;
     }
 
     public void OffSheel(){
-        target.GetComponent<NewMove>().ablemove = true;
-        target.GetComponent<FireNet>().ablefire = true;
-        target.GetComponent<FireNet>().ablemine = true;
-        target.GetComponent<mousemoveNet>().ablecameramove = true;
-        target.GetComponent<wheel>().wheelable = true;
+        target.GetComponent<Player_move_net>().IsMove = true;
+        target.GetComponent<Fire_Net>().IsFire = true;
+        target.GetComponent<Fire_Net>().IsMine = true;
+        target.GetComponent<Mouse_move_net>().AbleCameraMove = true;
+        target.GetComponent<Wheel>().IsWheelable = true;
     }
 
     public void SellectSheel(bool b){
-        target.GetComponent<NewMove>().ablemove = b;
-        target.GetComponent<FireNet>().ablefire = b;
-        target.GetComponent<FireNet>().ablemine = b;
-        target.GetComponent<mousemoveNet>().ablecameramove = b;
-        target.GetComponent<wheel>().wheelable = b;
+        target.GetComponent<Player_move_net>().IsMove = b;
+        target.GetComponent<Fire_Net>().IsFire = b;
+        target.GetComponent<Fire_Net>().IsMine = b;
+        target.GetComponent<Mouse_move_net>().AbleCameraMove = b;
+        target.GetComponent<Wheel>().IsWheelable = b;
     }
 
     public void DecideButton(){

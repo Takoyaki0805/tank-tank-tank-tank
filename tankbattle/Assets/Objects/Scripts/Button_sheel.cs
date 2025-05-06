@@ -31,7 +31,7 @@ public class Button_sheel : NetworkBehaviour
         }
         if(IsReady){
             GameObject target = camera.gameObject.transform.parent.parent.gameObject;
-            target.GetComponent<playersheel>().button();
+            target.GetComponent<Player_sheel>().DecideButton();
         }
     }
 

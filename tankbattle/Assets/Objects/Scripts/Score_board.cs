@@ -5,7 +5,7 @@ using System;
 using UnityEngine.UI;
 
 
-public class Score_Board : NetworkBehaviour
+public class Score_board : NetworkBehaviour
 {
     public TMP_Text red_txt;
     public TMP_Text blue_txt;
@@ -56,15 +56,15 @@ public class Score_Board : NetworkBehaviour
             canvas.SetActive(true);
             win_txt.SetActive(true);
             main.SetActive(false);
-            camera.GetComponent<button>().fbuttonswitch();
+            camera.GetComponent<Button_Ready>().ButtonSwitchFalse();
             
             GameObject[] group = GameObject.FindGameObjectsWithTag("Player");
             foreach(GameObject g in group){
                 Debug.Log(g);
                 if(g.name == "tank"||g.name == "tank(Clone)"){
                 if(g.GetComponent<NetworkObject>().IsOwner){
-                    IsRed = g.GetComponent<color>().isred; 
-                    IsBlue = g.GetComponent<color>().isblue;
+                    IsRed = g.GetComponent<Team_color>().IsRed; 
+                    IsBlue = g.GetComponent<Team_color>().IsBlue;
                 }
                 }
             }

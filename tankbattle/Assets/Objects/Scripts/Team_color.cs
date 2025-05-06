@@ -1,7 +1,7 @@
 using UnityEngine;
 using Unity.Netcode;
 
-public class color : NetworkBehaviour
+public class Team_color : NetworkBehaviour
 {
     public bool IsRed;
     public bool IsBlue;
@@ -54,10 +54,10 @@ public class color : NetworkBehaviour
 
     public void TeamSet(){
         // if(IsHost){
-            if(spawn_position.GetComponent<flagcolor>().flagred){
+            if(spawn_position.GetComponent<Flag_color>().flag_red){
                 IsRed = true;
             }
-            if(spawn_position.GetComponent<flagcolor>().flagblue){
+            if(spawn_position.GetComponent<Flag_color>().flag_blue){
                 IsBlue = true;
             }
 
@@ -69,14 +69,14 @@ public class color : NetworkBehaviour
          if(!IsHost){
             IsRed = r;
             IsBlue = b;
-            spawn_position = spawn_manage.GetComponent<SpawnManagement>().getObj(n);
+            spawn_position = spawn_manage.GetComponent<Spawn_management>().GetObject(n);
         }
     }    
 
     public void CountTeam(){
         GameObject[] p = GameObject.FindGameObjectsWithTag("Player");
         foreach(GameObject i in p){
-            color d = i.GetComponent<color>();
+            Team_color d = i.GetComponent<Team_color>();
             if(d.IsRed){
                 Debug.Log("on");
             }
@@ -91,13 +91,13 @@ public class color : NetworkBehaviour
             }else{
                 ServerPositionSet();
             }
-            spawn_manage.GetComponent<Readypipe>().showready();
+            spawn_manage.GetComponent<Ready_event>().showready();
         }
     }
 
     public void ServerPositionSet(){
-        number = spawn_manage.GetComponent<SpawnManagement>().playerattach();
-        spawn_position = spawn_manage.GetComponent<SpawnManagement>().getObj(number);
+        number = spawn_manage.GetComponent<Spawn_management>().PlayerAttach();
+        spawn_position = spawn_manage.GetComponent<Spawn_management>().GetObject(number);
         TeamSet();
     }
 

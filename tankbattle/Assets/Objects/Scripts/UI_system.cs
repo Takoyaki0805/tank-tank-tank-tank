@@ -14,7 +14,7 @@ public class UIsys : NetworkBehaviour
     int player_hp = 0;
     float bullet_charge = 0f;
     float charge_time = 0f;
-    public FireNet data_source;
+    public Fire_Net data_source;
     public Player_life hp_data_source;
     public TMP_Text txt;
     public Slider hpbar;
@@ -40,13 +40,13 @@ public class UIsys : NetworkBehaviour
         }catch(MissingReferenceException e){
             return;
         }
-        data_source = ui_obj.GetComponent<FireNet>();
-        hp_data_source = ui_obj.GetComponent<alive>();
+        data_source = ui_obj.GetComponent<Fire_Net>();
+        hp_data_source = ui_obj.GetComponent<Player_life>();
             // if(IsOwner){
-                player_bullet = data_source.havbullet;
-                player_mine = data_source.havmine;
-                charge_time = data_source.chargetime;
-                bullet_charge = data_source.bulletcharge;
+                player_bullet = data_source.have_bullet;
+                player_mine = data_source.have_mine;
+                charge_time = data_source.charge_cooltime;
+                bullet_charge = data_source.bullet_charge;
                 player_hp = hp_data_source.life;
                 player_maxhp = hp_data_source.maxlife;
                 hpbar.value = (float)player_hp/(float)player_maxhp;

@@ -9,7 +9,7 @@ public class Player_life : NetworkBehaviour
     bool isOnetime = true;
     GameObject camera;
     public ParticleSystem particle;
-    public GameObject[] tankPolygon;
+    public GameObject[] tank_polygon;
     // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NetworkVariable<int> networklife = new NetworkVariable<int>(
@@ -39,7 +39,7 @@ public class Player_life : NetworkBehaviour
     void OnCollisionEnter(Collision c){
         if(c.gameObject.tag=="ball"){
             Destroy(c.gameObject);
-            life -= c.gameObject.GetComponent<bulletmove>().atk;
+            life -= c.gameObject.GetComponent<Bullet_move>().attack;
             networklife.Value = life;
         }
         if(life<=0&&isOnetime){
@@ -51,12 +51,12 @@ public class Player_life : NetworkBehaviour
     void OnTriggerEnter(Collider c){
         if(c.gameObject.tag=="ball"){
             Destroy(c.gameObject);
-            life -= c.gameObject.GetComponent<bulletmove>().atk;
+            life -= c.gameObject.GetComponent<Bullet_move>().attack;
             networklife.Value = life;
         }
         if(c.gameObject.tag=="mineatkzone"){
             // Destroy(c.gameObject);
-            life -= c.gameObject.GetComponent<minedmg>().atk;
+            life -= c.gameObject.GetComponent<Mine_damage>().mine_atk;
             networklife.Value = life;
         }
         if(life<=0&&isOnetime){
@@ -83,18 +83,18 @@ public class Player_life : NetworkBehaviour
 
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
         GameObject manager = GameObject.FindGameObjectWithTag("spawnMNG");
-        if(IsOwner&&this.gameObject.GetComponent<color>().isred){
+        if(IsOwner&&this.gameObject.GetComponent<Team_color>().IsRed){
             if(IsHost){
-                manager.GetComponent<scoreboard>().redscore();
+                manager.GetComponent<Score_board>().RedScore();
             }else{
-                manager.GetComponent<scoreboard>().redscoreRpc();
+                manager.GetComponent<Score_board>().RedScoreRpc();
             }
         }
-        if(IsOwner&&this.gameObject.GetComponent<color>().isblue){
+        if(IsOwner&&this.gameObject.GetComponent<Team_color>().IsBlue){
             if(IsHost){
-                manager.GetComponent<scoreboard>().bluescore();
+                manager.GetComponent<Score_board>().BlueScore();
             }else{
-                manager.GetComponent<scoreboard>().bluescoreRpc();
+                manager.GetComponent<Score_board>().BlueScoreRpc();
             }            
         }
     }

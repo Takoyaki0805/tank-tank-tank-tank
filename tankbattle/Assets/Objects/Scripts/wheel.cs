@@ -20,9 +20,9 @@ public class Wheel : NetworkBehaviour
             timer += Time.deltaTime;
             if(0.35f<=timer){
                 if(IsHost){
-                    wheelline(this.transform.position);
+                    WheelLine(this.transform.position);
                 }else{
-                    wheellineRpc(this.transform.position);
+                    WheelLineRpc(this.transform.position);
                 }
                 timer = 0;
             }
