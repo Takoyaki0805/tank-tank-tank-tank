@@ -15,7 +15,7 @@ public class Ready_event : MonoBehaviour
         
     }
 
-    public void showready(){
-        ready.GetComponent<Button_sheel>().GetReady();
+    public void ShowReady(){
+        ready.GetComponent<Session_event>().PlayerBoot();
     }
 }

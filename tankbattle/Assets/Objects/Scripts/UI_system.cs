@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
-public class UIsys : NetworkBehaviour
+public class UI_system : NetworkBehaviour
 {
     public GameObject ui_target;
     public GameObject[] bullet_mark;

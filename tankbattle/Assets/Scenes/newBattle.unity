@@ -131,6 +131,10 @@ PrefabInstance:
       propertyPath: flagblue
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -9155878884226714416, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+      propertyPath: flag_blue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
       propertyPath: m_Name
       value: SpawnPoint (1)
@@ -188,6 +192,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+--- !u!1 &17818040 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+  m_PrefabInstance: {fileID: 17818039}
+  m_PrefabAsset: {fileID: 0}
 --- !u!64 &20380625
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2103,13 +2112,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  ui_target: {fileID: 0}
-  bullet_mark: []
-  data_source: {fileID: 0}
+  ui_target: {fileID: 1743914388}
+  bullet_mark:
+  - {fileID: 963559238}
+  - {fileID: 1480585242}
+  data_source: {fileID: 6089395833816949009, guid: be89c022579243946b9da87a9f923a7b, type: 3}
   hp_data_source: {fileID: 0}
   txt: {fileID: 1305840817}
   hpbar: {fileID: 345171056}
-  bullet_charge_bar: {fileID: 0}
+  bullet_charge_bar: {fileID: 1669562224}
 --- !u!64 &522948570
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -2183,7 +2194,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
   empty: 0101
-  where_spawn: []
+  where_spawn:
+  - {fileID: 748383072}
+  - {fileID: 17818040}
 --- !u!114 &583528519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2222,8 +2235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  target_button: {fileID: 0}
-  camera: {fileID: 0}
+  target_button: {fileID: 1286746896}
+  camera: {fileID: 1743914388}
 --- !u!114 &583528521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,14 +2250,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  red_txt: {fileID: 0}
-  blue_txt: {fileID: 0}
+  red_txt: {fileID: 1758255028}
+  blue_txt: {fileID: 1076710088}
   IsRedTeam: 0
   IsBlueTeam: 0
-  canvas: {fileID: 0}
-  win_txt: {fileID: 0}
-  lose_txt: {fileID: 0}
-  camera: {fileID: 0}
+  canvas: {fileID: 2061195910}
+  win_txt: {fileID: 1070347654}
+  lose_txt: {fileID: 1093252890}
+  camera: {fileID: 1743914388}
   main: {fileID: 501623633}
   max_score: 1
 --- !u!114 &583528522
@@ -7590,6 +7603,10 @@ PrefabInstance:
       propertyPath: flagred
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -9155878884226714416, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+      propertyPath: flag_red
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
       propertyPath: m_Name
       value: SpawnPoint
@@ -7651,6 +7668,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+--- !u!1 &748383072 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2624383835717839512, guid: c92a273d83339d44687512c19bbeb8e4, type: 3}
+  m_PrefabInstance: {fileID: 748383071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &754236713
 AudioSource:
   m_ObjectHideFlags: 0
@@ -9549,8 +9571,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 583528520}
-        m_TargetAssemblyTypeName: Buttondisable, Assembly-CSharp
-        m_MethodName: getready
+        m_TargetAssemblyTypeName: Button_sheel, Assembly-CSharp
+        m_MethodName: GetReady
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

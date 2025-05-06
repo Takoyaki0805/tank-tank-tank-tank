@@ -91,7 +91,7 @@ public class Team_color : NetworkBehaviour
             }else{
                 ServerPositionSet();
             }
-            spawn_manage.GetComponent<Ready_event>().showready();
+            spawn_manage.GetComponent<Ready_event>().ShowReady();
         }
     }
 

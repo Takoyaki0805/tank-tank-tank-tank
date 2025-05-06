@@ -1052,11 +1052,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  tar: {fileID: 5236397363941150962}
-  cam: {fileID: 0}
-  atk: {fileID: 98004432384538109}
+  target: {fileID: 5236397363941150962}
+  camera: {fileID: 0}
+  player_attack_value: {fileID: 98004432384538109}
   speed: 1000
-  ablecameramove: 0
+  AbleCameraMove: 0
 --- !u!114 &-1384152127077984429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,12 +1109,12 @@ MonoBehaviour:
   speed: 2.5
   Rig: {fileID: -4446518939595551479}
   tar: {fileID: 5808396969040537871}
-  obj: {fileID: 5808396969040537871}
-  fuc: {fileID: 98004432384538109}
-  spawnpos: {fileID: 0}
-  ablemove: 0
-  red: {fileID: 2100000, guid: 6d94f2ff20d556a43b3df92e9f68e8dd, type: 2}
-  blue: {fileID: 2100000, guid: 4c1e4347e1104ee4d95ed92e5531767c, type: 2}
+  player_target: {fileID: 5808396969040537871}
+  player_direction: {fileID: 98004432384538109}
+  spawn_position: {fileID: 0}
+  IsMove: 0
+  red_material: {fileID: 2100000, guid: 6d94f2ff20d556a43b3df92e9f68e8dd, type: 2}
+  blue_material: {fileID: 2100000, guid: 4c1e4347e1104ee4d95ed92e5531767c, type: 2}
 --- !u!114 &6089395833816949009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,22 +1128,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  obj: {fileID: 3781681733089895731, guid: ef34ce47ea2809748ba55ce4e619a8e3, type: 3}
-  tar: {fileID: 2858760274168360291}
-  g: {fileID: 98004432384538109}
-  speed: 20
+  player_object: {fileID: 3781681733089895731, guid: ef34ce47ea2809748ba55ce4e619a8e3, type: 3}
+  target: {fileID: 2858760274168360291}
+  machine_direction_object: {fileID: 98004432384538109}
+  player_speed: 20
   mine: {fileID: 3159298073375207366, guid: 72cd7e408c034ad4db8a11aee11886c5, type: 3}
-  minepos: {fileID: 8033554926616995599}
-  havbullet: 2
+  mine_position: {fileID: 8033554926616995599}
+  have_bullet: 2
   maxbullet: 2
-  bulletcharge: 5
-  coolcharge: 1.5
-  havmine: 3
-  chargetime: 0
-  cooltimer: 1.5
-  sound1: {fileID: 8300000, guid: 2c43ec5b483ae3046b5c5a5447ce6624, type: 3}
-  ablemine: 0
-  ablefire: 0
+  bullet_charge: 5
+  charge_cooltime: 1.5
+  have_mine: 3
+  mine_chargetime: 0
+  cooltime_timer: 1.5
+  sound_file: {fileID: 8300000, guid: 2c43ec5b483ae3046b5c5a5447ce6624, type: 3}
+  IsMine: 0
+  IsFire: 0
 --- !u!65 &6546162626945066913
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1178,9 +1178,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  obj: {fileID: 6558115808608444339, guid: 6a924c3a413958c479c567ed8af0a1cf, type: 3}
+  wheel_object: {fileID: 6558115808608444339, guid: 6a924c3a413958c479c567ed8af0a1cf, type: 3}
   timer: 0
-  wheelable: 0
+  IsWheelable: 0
 --- !u!114 &-109951341515135223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,19 +1196,9 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   maxlife: 100
   life: 0
-  dea: {fileID: 3929824772112469389, guid: 566c73fec2a66a4449de0a6acf46b57f, type: 3}
+  deadObject: {fileID: 0}
   particle: {fileID: 19800002, guid: 3364c97de68d3a147af572d1c71c6455, type: 3}
-  tankpolygon:
-  - {fileID: 5236397363941150962}
-  - {fileID: 1499713093507213898}
-  - {fileID: 1081245997928184527}
-  - {fileID: 5817889853736334474}
-  - {fileID: 1637186238886041053}
-  - {fileID: 7256519217166161503}
-  - {fileID: 7087451485798687509}
-  - {fileID: 2461017751884482655}
-  - {fileID: 7334530073232160142}
-  - {fileID: 98004432384538109}
+  tank_polygon: []
 --- !u!82 &8188770074450776877
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1416,7 +1406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  tar: {fileID: 5808396969040537871}
+  target: {fileID: 5808396969040537871}
 --- !u!114 &-3362564014176038120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,10 +1420,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ShowTopMostFoldoutHeaderGroup: 1
-  isred: 0
-  isblue: 0
-  spawnpos: {fileID: 0}
-  n: 0
+  IsRed: 0
+  IsBlue: 0
+  spawn_position: {fileID: 0}
+  number: 0
 --- !u!1 &5817889853736334474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 929905818870833364, guid: fceacd21e62ab2f488627f09997c5632, type: 3}
