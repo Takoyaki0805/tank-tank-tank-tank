@@ -233,7 +233,7 @@
                 {
                     "name": "",
                     "id": "164fc31a-07c5-4574-9e08-5a480cfe173e",
-                    "path": "<HID::NATSU Force Modulator for Playstation>/button5",
+                    "path": "<HID::NATSU Force Modulator for Playstation>/button6",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -266,7 +266,7 @@
                 {
                     "name": "",
                     "id": "21232a27-a8aa-487f-9feb-b1a1ddb40dce",
-                    "path": "<HID::NATSU Force Modulator for Playstation>/button6",
+                    "path": "<HID::NATSU Force Modulator for Playstation>/button5",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

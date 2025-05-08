@@ -18,7 +18,7 @@ public class ButtonManager : MonoBehaviour
     }
     void next()
     {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene("NewMatch");
     }
     private void OnDestroy(){
         CancelInvoke();
