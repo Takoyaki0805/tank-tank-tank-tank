@@ -32,6 +32,7 @@ public class Player_move_net : Player_move
     // Update is called once per frame
     public void Update()
     {
+        //プレイヤーの操作を入力する
         move_value = key.ReadValue<Vector2>();
         if(IsOwner&&IsMove){
             if(move_value.x!=0){

@@ -14,14 +14,6 @@ public class Bullet_move : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // rig = tar.GetComponent<Rigidbody>();
-        // foreach(GameObject bt in GameObject.FindGameObjectsWithTag("playerbullet")){
-        //     if(bt.IsOwner){
-        //         this.transform.localEulerAngles = bt.transform.localEulerAngles;
-        //         rig.AddForce( bt.transform.forward*speed,ForceMode.Impulse);    
-        //     }
-        // }
-        // Debug.Log(bt.transform.localEulerAngles);
 
     }
 
@@ -29,7 +21,6 @@ public class Bullet_move : NetworkBehaviour
     void Update()
     {
         if(timer >= time_limit || count>bounce){
-            // Destroy(this.gameObject);
             if(IsHost){
                 DisSpawn();
                 
@@ -38,42 +29,30 @@ public class Bullet_move : NetworkBehaviour
             }
         }
         timer += Time.deltaTime;
-        // Debug.Log(timer);
     }
     public override void OnNetworkSpawn()
     {
 
-        // //ホストの場合
-        // if (IsHost)
-        // {
-        //     rig.AddForce( tar.transform.forward*speed,ForceMode.Impulse);  
-        // }
     }
 
+    //弾丸を破壊する
     void DisSpawn(){
         this.gameObject.GetComponent<NetworkObject>().Despawn();
     }
 
-    void OnCollisionEnter(Collision c){
-        // if(c.gameObject.tag=="wall"){
-        // Rigidbody rig = this.gameObject.GetComponent<Rigidbody>();
-        // rig.linearVelocity = Vector3.Reflect(rig.linearVelocity,c.GetContact(0).normal);
-        // rig.AddForce( this.transform.forward*8f,ForceMode.Impulse);   
-        // Debug.Log(rig.linearVelocity);
-        // count++;
-        // }
-        // if(c.gameObject.tag=="ball"){
-            if(IsHost){
-                DisSpawn();
-            }else{
-                DisSpawnRpc();
-            }
-        // }
-    }
-
+    //ホストにオブジェクトの破棄を依頼する
     [Rpc(SendTo.Server)]
     public void DisSpawnRpc(){
         DisSpawn();
     }
 
+
+    void OnCollisionEnter(Collision c){
+    //ゲームホスト、クライアントのどちらに弾丸が命中したかによって処理を変更する。
+            if(IsHost){
+                DisSpawn();
+            }else{
+                DisSpawnRpc();
+            }
+    }
 }

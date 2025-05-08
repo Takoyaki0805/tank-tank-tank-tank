@@ -7,7 +7,6 @@ using Unity.Netcode;
 public class Fire_Net : NetworkBehaviour
 {
     public GameObject player_object;
-    // public GameObject objB;
     public GameObject target;
     public GameObject machine_direction_object; 
     public float player_speed = 100;
@@ -35,6 +34,7 @@ public class Fire_Net : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //弾丸が上限数でなければチャージを開始する
         if(have_bullet!=maxbullet){
             bullet_chargetime += Time.deltaTime;
             if(cooltime_timer<=charge_cooltime){
@@ -50,6 +50,7 @@ public class Fire_Net : NetworkBehaviour
         }
     }
 
+    //射撃をする
     public void OnFire(InputAction.CallbackContext context){
         if(context.performed&&IsOwner&&have_bullet!=0&&charge_cooltime<=cooltime_timer&&IsFire){
             Vector3 position = target.transform.position;
@@ -64,6 +65,7 @@ public class Fire_Net : NetworkBehaviour
         }
     }
 
+    //地雷を設置する
     public void Setmine(InputAction.CallbackContext context){
         if(context.performed&&IsOwner&&have_mine!=0&&IsMine){
             Vector3 position = mine_position.transform.position;
@@ -76,6 +78,7 @@ public class Fire_Net : NetworkBehaviour
         }
     }
 
+    //オブジェクトを生成する
     public void BulletSpawn(Vector3 pos){
         GameObject bullet_object = Instantiate (player_object,pos,Quaternion.identity);
         // NetworkObject f = bullet_object.GetComponent<NetworkObject>();
@@ -91,6 +94,7 @@ public class Fire_Net : NetworkBehaviour
         mine_object.GetComponent<NetworkObject>().Spawn();
     }
 
+    //ゲームホストに生成を依頼する
     [Rpc(SendTo.Server)]
     public void BulletSpawnRpc(Vector3 pos){
         BulletSpawn(pos);

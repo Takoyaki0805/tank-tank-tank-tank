@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Unity.Netcode;
 
-public class mousemove : MonoBehaviour
+//オフライン版のマウス操作の挙動
+public class Mouse_move_off : MonoBehaviour
 {
     public GameObject target;
     public GameObject cam;
@@ -14,35 +15,26 @@ public class mousemove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // if(IsOwner){
-            cam = GameObject.FindWithTag("MainCamera");
-            SceneManager.sceneLoaded += OnLoaded;
-            cam.transform.position = attack.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
-            cam.transform.parent = target.transform;
-        // }
+    //カメラを視点の位置に移動
+        cam = GameObject.FindWithTag("MainCamera");
+        SceneManager.sceneLoaded += OnLoaded;
+        cam.transform.position = attack.transform.position + Vector3.back*3.5f +Vector3.up*1.5f;
+        cam.transform.parent = target.transform;
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        //上限を調整
         float h = Input.GetAxis("Mouse X");
-        // Debug.Log(h);
         if(h>=3f){
             h=3f;
         }
         if(h<=-3f){
             h=-3f;
         }
-        
-        // if(IsOwner){
-            attack.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            cam.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
-            // cam.transform.position = atk.transform.position + Vector3.back*2.8f + Vector3.up*2f;
-            // aroundServerRpc(h);
-            // turnServerRpc(atk.transform.position,atk.transform.localEulerAngles);
-            // cam.transform.position = atk.transform.position + Vector3.back*3.5f + Vector3.up*2f;
-        // }
-
+        attack.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
+        cam.transform.RotateAround (target.transform.position, Vector3.up, h*Time.deltaTime*speed);
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){

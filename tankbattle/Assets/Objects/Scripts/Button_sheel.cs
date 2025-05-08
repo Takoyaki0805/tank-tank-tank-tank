@@ -21,11 +21,10 @@ public class Button_sheel : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //プレイヤー二人が準備完了したらプレイヤーの制限を開放する
         if(networkint.Value >= 2 && !IsReady){
-            // tar.interactable = true;
             try{Destroy(target_button.gameObject);}
             catch (MissingReferenceException e){
-
             }
             IsReady = true;
         }
@@ -35,6 +34,7 @@ public class Button_sheel : NetworkBehaviour
         }
     }
 
+    //ボタンを押したプレイヤーがゲームホスト、クライアントによって動作を切り替える
     public void GetReady(){
         target_button.interactable = false;
         if(IsHost){
@@ -42,12 +42,14 @@ public class Button_sheel : NetworkBehaviour
         }else{
             ReadyCountRpc();
         }
-    } 
+    }
 
+    //何人が準備完了したかをカウントする
     public void ReadyCount(){
         networkint.Value = networkint.Value + 1;
     }
 
+    //ゲームホストにカウントを依頼する
     [Rpc(SendTo.Server)]
     public void ReadyCountRpc(){
         ReadyCount();

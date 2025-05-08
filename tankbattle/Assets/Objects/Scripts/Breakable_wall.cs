@@ -15,7 +15,7 @@ public class Breakable_wall : MonoBehaviour
     {
         
     }
-
+    //地雷の爆風にあたったら壁を破壊する
     void OnTriggerEnter(Collider c){
         if(c.gameObject.tag=="mineatkzone"){
             audio_source.PlayOneShot(sound);

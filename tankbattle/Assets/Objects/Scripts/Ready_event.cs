@@ -15,6 +15,7 @@ public class Ready_event : MonoBehaviour
         
     }
 
+    //準備完了ボタンに関するイベントを起動する
     public void ShowReady(){
         ready.GetComponent<Session_event>().PlayerBoot();
     }

@@ -16,6 +16,7 @@ public class mine : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //アニメを起動する
         anim = this.gameObject.GetComponent<Animator>();
         bomb.SetActive(false);
     }
@@ -23,8 +24,8 @@ public class mine : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
+        //時間経過で爆破判定を出し、エフェクトを出す
         mine_timer += Time.deltaTime;
-        // Debug.Log(pheseA);
         if(mine_timer>=mine_pheseA){
             anim.SetBool("alarm",true);
         }
@@ -38,9 +39,9 @@ public class mine : NetworkBehaviour
 			newParticle.Play();
 			// インスタンス化したパーティクルシステムのGameObjectを5秒後に削除する。(任意)
 			// ※第一引数をnewParticleだけにするとコンポーネントしか削除されない。
-			// Destroy(newParticle.gameObject, 5.0f);
         }
         if(mine_timer>=mine_pheseC){
+            //地雷を出したプレイヤーがゲームホスト化クライアントかで切り替える
             if(IsHost){
                 DisSpawnMine();
             }else{
@@ -49,10 +50,12 @@ public class mine : NetworkBehaviour
         }
     }
 
+    //地雷オブジェクトを破棄する
     public void DisSpawnMine(){
         this.gameObject.GetComponent<NetworkObject>().Despawn();
     }
 
+    //ゲームホストに破棄を依頼する
     [Rpc(SendTo.Server)]
     public void DisSpawnMineRpc(){
         DisSpawnMine();

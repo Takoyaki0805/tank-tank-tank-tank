@@ -34,13 +34,14 @@ public class Score_board : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //勝敗と退出ボタンを隠す
         canvas.SetActive(false);
         win_txt.SetActive(false);
         lose_txt.SetActive(false);
         if(IsHost){
             ResetScore();
         }else{
-            // resetscoreRpc();
+            
         }
         red_txt.SetText(red_team_menber.Value.ToString());
         blue_txt.SetText(blue_team_menber.Value.ToString());
@@ -52,12 +53,13 @@ public class Score_board : NetworkBehaviour
     {
         red_txt.SetText(red_team_menber.Value.ToString());
         blue_txt.SetText(blue_team_menber.Value.ToString());
+        //どちらかの陣営のスコアが0になったら自分の陣営に応じて勝敗のテキストを出す
         if(red_team_menber.Value == 0||blue_team_menber.Value == 0){
             canvas.SetActive(true);
             win_txt.SetActive(true);
             main.SetActive(false);
             cam.GetComponent<Button_Ready>().ButtonSwitchFalse();
-            
+            //それぞれの自機のチームを判別する
             GameObject[] group = GameObject.FindGameObjectsWithTag("Player");
             foreach(GameObject g in group){
                 Debug.Log(g);
@@ -68,13 +70,6 @@ public class Score_board : NetworkBehaviour
                 }
                 }
             }
-
-
-
-
-
-
-
             if(red_team_menber.Value == 0&&IsRed){
                 win_txt.SetActive(false);
                 lose_txt.SetActive(true);
@@ -85,7 +80,7 @@ public class Score_board : NetworkBehaviour
             }            
         }    
     }
-
+    //それぞれのチームのスコアを減らす
     public void RedScore(){
         red_team_menber.Value = red_team_menber.Value -1;
     }
@@ -93,7 +88,7 @@ public class Score_board : NetworkBehaviour
     public void BlueScore(){
         blue_team_menber.Value = blue_team_menber.Value -1;
     }
-
+    //ゲームホストに情報を集中させるためにクライアントがゲームホストに得点操作を依頼する
     [Rpc(SendTo.Server)]
     public void RedScoreRpc(){
         RedScore();

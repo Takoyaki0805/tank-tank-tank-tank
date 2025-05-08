@@ -16,16 +16,14 @@ public class Team_setting : MonoBehaviour
         
     }
 
+    //チームを振り分ける
     public void SetTeam(){
         GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
-        // cam = GameObject.FindGameObjectWithTag("MainCamera");
         if(spawnPosition.GetComponent<Flag_color>().flag_red&&isSetup){
-        //    mng.GetComponent<scoreboard>().isred = true;
             camera.GetComponent<Team_color>().IsRed = true;
             camera.GetComponent<Team_color>().IsBlue = false;
         }
         if(spawnPosition.GetComponent<Flag_color>().flag_blue&&isSetup){
-        //    mng.GetComponent<scoreboard>().isblue = true; 
             camera.GetComponent<Team_color>().IsBlue = true; 
             camera.GetComponent<Team_color>().IsRed = false;  
         } 

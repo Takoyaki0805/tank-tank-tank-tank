@@ -27,6 +27,7 @@ public class Spawn_management : NetworkBehaviour
 
     }
 
+    //スポーン地点の予約状況をリセットさせる
     public void ResetManage(){
         if(IsReset){return;}
             empty = new bool[2];
@@ -37,7 +38,9 @@ public class Spawn_management : NetworkBehaviour
     public int PlayerAttach(){
         bool escaped = false;
         while(!escaped){
+            //ランダムに番号を出力し結果に応じてスポーン地点を振り分ける
             spawn_index = rnd.Next(empty.Length);
+            //振り分けられた地点が予約済みじゃないならループから抜ける
             if(empty[spawn_index]){
                 empty[spawn_index] = false;
                 escaped = true;
@@ -46,6 +49,8 @@ public class Spawn_management : NetworkBehaviour
         Debug.Log(spawn_index);  
         return spawn_index;
     }
+
+    //ここから先は未使用
     [Rpc(SendTo.Server)]
     public void SpawnCheckRpc(){
         PlayerAttach();

@@ -21,10 +21,12 @@ public class Session_event : NetworkBehaviour
         
     }
 
+    //準備完了ボタンを出現させる
     public void PlayerBoot(){
         ready.SetActive(true);
     }
 
+    //ネットワークを終了しマッチ画面に移動する
     public void stopnet(){
         GameObject net = GameObject.FindWithTag("NET");
         Destroy(net);
@@ -33,14 +35,13 @@ public class Session_event : NetworkBehaviour
         SceneManager.LoadScene("NewMatch");
     }
 
+    //セッションを破棄する
     async Task LeaveSession(){
         try
         {
-                    //Ensure you sign-in before calling Authentication Instance
-                    //See IAuthenticationService interface
-                    string player_id = AuthenticationService.Instance.PlayerId;
-                    var lobby_id = await LobbyService.Instance.GetJoinedLobbiesAsync();
-                    await LobbyService.Instance.RemovePlayerAsync(lobby_id[0], player_id);
+            string player_id = AuthenticationService.Instance.PlayerId;
+            var lobby_id = await LobbyService.Instance.GetJoinedLobbiesAsync();
+            await LobbyService.Instance.RemovePlayerAsync(lobby_id[0], player_id);
         }
         catch (LobbyServiceException e)
         {

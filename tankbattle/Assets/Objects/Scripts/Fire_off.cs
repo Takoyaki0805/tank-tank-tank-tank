@@ -19,6 +19,7 @@ public class Fire_off : MonoBehaviour
                 
     }
 
+    //弾丸を発射する
     public void OnFire(InputAction.CallbackContext context){
         Vector3 position = target.transform.position;
         if(context.performed){

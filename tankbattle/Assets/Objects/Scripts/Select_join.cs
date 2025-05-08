@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Select_join : MonoBehaviour
 {
+    //現在は使用していないスプリクト
     public NetworkManager net;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,6 @@ public class Select_join : MonoBehaviour
     }
 
     public void JoinClient(){
-        // SceneManager.LoadScene("Battle Stage");   
         net.StartClient();
     } 
     
@@ -53,15 +53,6 @@ public class Select_join : MonoBehaviour
 
         //生成するPrefabハッシュ値。nullの場合NetworkManagerに登録したプレハブが使用される
         response.PlayerPrefabHash = null;
-
-        //PlayerObjectをスポーンする位置(nullの場合Vector3.zero)
-        // var position = new Vector3(0, 1, -8);
-        // position.x = -5 + 5 * (NetworkManager.Singleton.ConnectedClients.Count % 3);
-        // response.Position = position;
-
-        //PlayerObjectをスポーン時の回転 (nullの場合Quaternion.identity)
-        // response.Rotation = Quaternion.identity;
-
         response.Pending = false;
     }
 

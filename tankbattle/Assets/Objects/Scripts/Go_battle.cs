@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class Go_battle : MonoBehaviour
 {
+    //バトルステージに移動するイベント
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,7 +17,6 @@ public class Go_battle : MonoBehaviour
     }
 
     public void Go(){ 
-        // SceneManager.LoadScene("Battle Stage");
         SceneManager.LoadScene("newBattle");
     }
 }

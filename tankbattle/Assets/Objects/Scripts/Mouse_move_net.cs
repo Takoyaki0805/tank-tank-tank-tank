@@ -23,6 +23,7 @@ public class Mouse_move_net : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //カメラを適切な視点に移動
         if(IsOwner){
             cam = GameObject.FindWithTag("MainCamera");
             SceneManager.sceneLoaded += OnLoaded;
@@ -33,20 +34,22 @@ public class Mouse_move_net : NetworkBehaviour
         key = Input.actions["camera"];
     }
 
+    //砲身をマウスで動かす
     // Update is called once per frame
     void Update()
     {
         float mouse_value = Input.GetAxis("Mouse X");
         float mouse_move_max = 0;
         move_value = key.ReadValue<Vector2>();
-        // Debug.Log(h);
         if(AbleCameraMove){
+            //上限を調整
             if(mouse_value>0){
                 mouse_move_max=3f;
             }
             if(mouse_value<0){
                 mouse_move_max=-3f;
             }
+            //下限を調整
             if(mouse_value<0.1&&mouse_value>-0.1){
                 mouse_move_max=0;
             }else{
