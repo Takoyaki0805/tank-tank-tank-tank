@@ -10,7 +10,6 @@ public class Player_life : NetworkBehaviour
     GameObject cam;
     public ParticleSystem particle;
     public GameObject[] tank_polygon;
-    // public int atk = 30;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     private NetworkVariable<int> networklife = new NetworkVariable<int>(
         100,                                          // 初期値
