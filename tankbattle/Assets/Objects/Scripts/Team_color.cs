@@ -10,13 +10,6 @@ public class Team_color : NetworkBehaviour
     public GameObject spawn_position;
     [SerializeField]int number;
     bool IsOnetime = true;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -34,7 +27,8 @@ public class Team_color : NetworkBehaviour
 
     //スポーンマネージャを探す
     public void SetupManage(){
-        spawn_manage = GameObject.FindWithTag("spawnMNG");
+        string object_tag_name = "spawnMNG";
+        spawn_manage = GameObject.FindWithTag(object_tag_name);
     }
 
     public void TeamSet(){
@@ -85,6 +79,5 @@ public class Team_color : NetworkBehaviour
     public void TransformRpc(Vector3 pos){
         this.gameObject.transform.position = pos;        
     }
-
 }
 

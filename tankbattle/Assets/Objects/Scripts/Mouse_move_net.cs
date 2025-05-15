@@ -14,6 +14,9 @@ public class Mouse_move_net : NetworkBehaviour
     InputAction key;
     Vector2 move_value;
     public bool AbleCameraMove = false;
+    string camera_tag_name = "MainCamera";
+    string camera_key_config = "camera";
+    string mouse_volume = "Mouse X";
 
     private NetworkVariable<float> move_point = new NetworkVariable<float>(
         0f,                                          // 初期値
@@ -25,39 +28,42 @@ public class Mouse_move_net : NetworkBehaviour
     {
         //カメラを適切な視点に移動
         if(IsOwner){
-            cam = GameObject.FindWithTag("MainCamera");
+            cam = GameObject.FindWithTag(camera_tag_name);
             SceneManager.sceneLoaded += OnLoaded;
             cam.transform.position = player_attack_value.transform.position + Vector3.back*4.2f +Vector3.up*2f;
             cam.transform.parent = target.transform;
         }
         var Input = this.gameObject.GetComponent<PlayerInput>();
-        key = Input.actions["camera"];
+        key = Input.actions[camera_key_config];
     }
 
     //砲身をマウスで動かす
     // Update is called once per frame
     void Update()
     {
-        float mouse_value = Input.GetAxis("Mouse X");
-        float mouse_move_max = 0;
+        float mouse_value = Input.GetAxis(mouse_volume);
+        float mouse_move_max = 0f;
+        float value_limit = 0f;
+        float value_lower_limit = 0.1f;
+        float value_correction = 3.5f;
         move_value = key.ReadValue<Vector2>();
         if(AbleCameraMove){
             //上限を調整
             if(mouse_value>0){
-                mouse_move_max=3f;
+                mouse_move_max=value_limit;
             }
-            if(mouse_value<0){
+            if(mouse_value<value_limit){
                 mouse_move_max=-3f;
             }
             //下限を調整
-            if(mouse_value<0.1&&mouse_value>-0.1){
+            if(mouse_value<value_lower_limit&&mouse_value>-value_lower_limit){
                 mouse_move_max=0;
             }else{
                 mouse_move_max=mouse_value;
             }
             if(IsOwner){
                 if(move_value.x!=0){
-                    move_point.Value = move_value.x*Time.deltaTime*speed/3.5f;
+                    move_point.Value = move_value.x*Time.deltaTime*speed/value_correction;
                 }else{
                     move_point.Value = mouse_move_max*Time.deltaTime*speed;
                 }
@@ -68,7 +74,7 @@ public class Mouse_move_net : NetworkBehaviour
     }
 
     void OnLoaded(Scene s,LoadSceneMode m){
-        cam = GameObject.FindWithTag("MainCamera");        
+        cam = GameObject.FindWithTag(camera_tag_name);        
     }
 
     [Unity.Netcode.ServerRpc]

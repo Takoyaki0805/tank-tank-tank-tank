@@ -15,19 +15,14 @@ public class Select_join : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void JoinClient(){
         net.StartClient();
     } 
     
     public void JoinHost(){
+        string next_scene = "Battle Stage";
         NetworkManager.Singleton.ConnectionApprovalCallback = ApprovalCheck;
-        SceneManager.LoadScene("Battle Stage");
+        SceneManager.LoadScene(next_scene);
         net.StartHost();
     } 
 
@@ -37,8 +32,9 @@ public class Select_join : MonoBehaviour
         // true から false に遷移すると、接続承認応答が処理されます。
         response.Pending = true;
 
-        //最大人数をチェック(この場合は4人まで)
-        if (NetworkManager.Singleton.ConnectedClients.Count >= 2+1)
+        //最大人数をチェック(この場合は2人まで)
+        int max_player = 3;
+        if (NetworkManager.Singleton.ConnectedClients.Count >= max_player)
         {
             response.Approved = false;//接続を許可しない
             response.Pending = false;

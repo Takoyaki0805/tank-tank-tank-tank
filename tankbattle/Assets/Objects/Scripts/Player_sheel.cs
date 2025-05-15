@@ -21,11 +21,6 @@ public class Player_sheel : NetworkBehaviour
         };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     //プレイヤーの動きを封じる、開放する、現在の状況から切り替える
     public void OnSheel(){
         target.GetComponent<Player_move_net>().IsMove = false;
@@ -84,7 +79,4 @@ public class Player_sheel : NetworkBehaviour
     void CancelBool(){
         networkBool.Value = false;
     }    
-
-
-
 }

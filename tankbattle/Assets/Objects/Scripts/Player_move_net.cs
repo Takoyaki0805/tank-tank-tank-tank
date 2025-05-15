@@ -24,9 +24,8 @@ public class Player_move_net : Player_move
     void Start()
     {
         var Input = player_target.GetComponent<PlayerInput>();
-        // if(IsOwner){
-        key = Input.actions["move"];
-        // }
+        string input_map = "move";
+        key = Input.actions[input_map];
     }
 
     // Update is called once per frame
@@ -37,7 +36,8 @@ public class Player_move_net : Player_move
         if(IsOwner&&IsMove){
             if(move_value.x!=0){
                 Rig.linearVelocity = tar.transform.forward*Math.Abs(move_value.x)*speed;
-                tar.transform.eulerAngles += new Vector3(0,move_value.x*speed*50*Time.deltaTime,0);
+                float correction = 50f;
+                tar.transform.eulerAngles += new Vector3(0,move_value.x*speed*correction*Time.deltaTime,0);
             }else{
                 Rig.linearVelocity = tar.transform.forward*move_value.y*speed;
             }
@@ -47,8 +47,4 @@ public class Player_move_net : Player_move
     void Awake(){
         DontDestroyOnLoad(this);
     }
-
-    public override void OnNetworkSpawn(){
-    }
-
 }

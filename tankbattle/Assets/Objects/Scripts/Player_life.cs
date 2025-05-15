@@ -11,8 +11,14 @@ public class Player_life : NetworkBehaviour
     public ParticleSystem particle;
     public GameObject[] tank_polygon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    int life_gameover = 0;
+    string camera_tag_name = "MainCamera";
+    string bullet_tag_name = "ball";
+    string mine_area_tag_name = "mineatkzone";
+    string manager_tag_name = "spawnMNG";
+    string Unseen_layer_name = "Unseen";
     private NetworkVariable<int> networklife = new NetworkVariable<int>(
-        100,                                          // 初期値
+        100,                                          // 初期値(仮としてHPを100に設定)
         NetworkVariableReadPermission.Everyone,     // 読み取り権限
         NetworkVariableWritePermission.Server        // 書き込み権限
         );
@@ -20,9 +26,9 @@ public class Player_life : NetworkBehaviour
     void Start()
     {
         life = maxlife;
-        cam = GameObject.FindWithTag("MainCamera");
+        cam = GameObject.FindWithTag(camera_tag_name);
         if(IsHost){
-        networklife.Value = maxlife;
+            networklife.Value = maxlife;
         }
     }
 
@@ -31,14 +37,14 @@ public class Player_life : NetworkBehaviour
     {
         //現在のHPを同期する
         life = networklife.Value;
-        if(life<=0&&isOnetime){
+        if(life<=life_gameover&&isOnetime){
             IsGameOver();
             isOnetime = false;
         }
     }
 
     void OnCollisionEnter(Collision c){
-        if(c.gameObject.tag=="ball"){
+        if(c.gameObject.tag == bullet_tag_name){
             Destroy(c.gameObject);
             life -= c.gameObject.GetComponent<Bullet_move>().attack;
             networklife.Value = life;
@@ -50,17 +56,17 @@ public class Player_life : NetworkBehaviour
     }
 
     void OnTriggerEnter(Collider c){
-        if(c.gameObject.tag=="ball"){
+        if(c.gameObject.tag == bullet_tag_name){
             Destroy(c.gameObject);
             life -= c.gameObject.GetComponent<Bullet_move>().attack;
             networklife.Value = life;
         }
-        if(c.gameObject.tag=="mineatkzone"){
+        if(c.gameObject.tag == mine_area_tag_name){
             // Destroy(c.gameObject);
             life -= c.gameObject.GetComponent<Mine_damage>().mine_atk;
             networklife.Value = life;
         }
-        if(life<=0&&isOnetime){
+        if(life<=life_gameover&&isOnetime){
             IsGameOver();
             isOnetime = false;
         }
@@ -76,15 +82,15 @@ public class Player_life : NetworkBehaviour
 		newParticle.Play();
 		// インスタンス化したパーティクルシステムのGameObjectを5秒後に削除する。(任意)
 		// ※第一引数をnewParticleだけにするとコンポーネントしか削除されない。
-		Destroy(newParticle.gameObject, 5.0f);
+        float effect_kill_time = 5.0f
+		Destroy(newParticle.gameObject, effect_kill_time);
         //爆発エフェクトと同時に自機を見えなくさせる
         foreach (GameObject g in tank_polygon){
-            g.gameObject.layer = LayerMask.NameToLayer("Unseen");
+            g.gameObject.layer = LayerMask.NameToLayer(Unseen_layer_name);
         }
-        
         //スコアを減らす
-        GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-        GameObject manager = GameObject.FindGameObjectWithTag("spawnMNG");
+        GameObject cam = GameObject.FindGameObjectWithTag(camera_tag_name);
+        GameObject manager = GameObject.FindGameObjectWithTag(manager_tag_name);
         if(IsOwner&&this.gameObject.GetComponent<Team_color>().IsRed){
             if(IsHost){
                 manager.GetComponent<Score_board>().RedScore();

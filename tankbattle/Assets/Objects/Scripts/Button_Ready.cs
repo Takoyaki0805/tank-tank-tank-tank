@@ -4,18 +4,6 @@ using UnityEngine.SceneManagement;
 
 public class Button_Ready : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //準備完了ボタンを表示したり消したりする。
     public void ButtonSwitch(){
         GameObject target = this.gameObject.transform.parent.parent.gameObject;
@@ -26,7 +14,5 @@ public class Button_Ready : MonoBehaviour
         GameObject target = this.gameObject.transform.parent.parent.gameObject;
         target.GetComponent<Player_sheel>().CancelButton();
     }
-
-
 }
 

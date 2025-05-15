@@ -6,25 +6,21 @@ public class Wheel : NetworkBehaviour
     public GameObject wheel_object;
     public float timer;
     public bool IsWheelable = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        float delete_time = 0.35f;
+        float reset_time = 0f;
         //時間に経過で自機からタイヤ痕を生成する
         if(IsWheelable){
             timer += Time.deltaTime;
-            if(0.35f<=timer){
+            if(delete_time<=timer){
                 if(IsHost){
                     WheelLine(this.transform.position);
                 }else{
                     WheelLineRpc(this.transform.position);
                 }
-                timer = 0;
+                timer = reset_time;
             }
         }
     }

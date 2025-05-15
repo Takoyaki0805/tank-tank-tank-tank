@@ -7,12 +7,6 @@ public class Delete_line : NetworkBehaviour
     public float limit = 7.5f;
     public GameObject left_line;
     public GameObject right_line;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {

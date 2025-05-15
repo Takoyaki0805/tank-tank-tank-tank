@@ -21,14 +21,6 @@ public class UI_system : NetworkBehaviour
     public Slider hp_bar;
     public Slider bullet_charge_bar;
     GameObject ui_obj;
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -50,21 +42,25 @@ public class UI_system : NetworkBehaviour
         player_maxhp = hp_data_source.maxlife;
         hp_bar.value = (float)player_hp/(float)player_maxhp;
         bullet_charge_bar.value = (float)charge_time/(float)bullet_charge;
+        int charge_non = 0;
+        int charge_mid = 1;
+        int charge_max = 2;
         //弾丸のチャージ数でアイコンの表記を変える
-        if(player_bullet==0){
+        if(player_bullet==charge_non){
             foreach(GameObject j in bullet_mark){
                 j.SetActive(false);
             }
         }
-        if(player_bullet==1){
+        if(player_bullet==charge_mid){
             bullet_mark[0].SetActive(true);
             bullet_mark[1].SetActive(false);
         }
-        if(player_bullet==2){
+        if(player_bullet==charge_max){
             foreach(GameObject j in bullet_mark){
                 j.SetActive(true);
             }
         }
-        txt.SetText(player_mine+"");
+        string mine_number = player_mine + "";
+        txt.SetText(mine_number);
     }
 }

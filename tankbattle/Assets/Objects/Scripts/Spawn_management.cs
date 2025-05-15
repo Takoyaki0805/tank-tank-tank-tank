@@ -13,28 +13,19 @@ public class Spawn_management : NetworkBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        empty = new bool[2];
+        int sheet = 2;
+        empty = new bool[sheet];
         Array.Fill(empty,true);
     }
-
-    void Awake(){
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
+    
     //スポーン地点の予約状況をリセットさせる
     public void ResetManage(){
         if(IsReset){return;}
-            empty = new bool[2];
+            empty = new bool[sheet];
             Array.Fill(empty,true);
             IsReset = false;
     }
-
+    
     public int PlayerAttach(){
         bool escaped = false;
         while(!escaped){

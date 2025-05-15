@@ -19,11 +19,11 @@ public class Fire_Net : NetworkBehaviour
     public int have_mine = 3;
     public float bullet_chargetime = 0f;
     public float cooltime_timer = 0f;
+    int have_none = 0;
     public AudioClip sound_file;
     AudioSource audio_source;
     public bool IsMine = false;
     public bool IsFire = false;
-
 
     // Start is called before the first frame update
     void Start()
@@ -52,7 +52,7 @@ public class Fire_Net : NetworkBehaviour
 
     //射撃をする
     public void OnFire(InputAction.CallbackContext context){
-        if(context.performed&&IsOwner&&have_bullet!=0&&charge_cooltime<=cooltime_timer&&IsFire){
+        if(context.performed&&IsOwner&&have_bullet!=have_none&&charge_cooltime<=cooltime_timer&&IsFire){
             Vector3 position = target.transform.position;
             if(IsHost){
                 BulletSpawn(position);
@@ -67,7 +67,7 @@ public class Fire_Net : NetworkBehaviour
 
     //地雷を設置する
     public void Setmine(InputAction.CallbackContext context){
-        if(context.performed&&IsOwner&&have_mine!=0&&IsMine){
+        if(context.performed&&IsOwner&&have_mine!=have_none&&IsMine){
             Vector3 position = mine_position.transform.position;
             if(IsHost){
                 MineSpawn(position);
@@ -81,7 +81,6 @@ public class Fire_Net : NetworkBehaviour
     //オブジェクトを生成する
     public void BulletSpawn(Vector3 pos){
         GameObject bullet_object = Instantiate (player_object,pos,Quaternion.identity);
-        // NetworkObject f = bullet_object.GetComponent<NetworkObject>();
         bullet_object.GetComponent<NetworkObject>().Spawn();
         Rigidbody rig = bullet_object.GetComponent<Rigidbody>();
         bullet_object.transform.eulerAngles = machine_direction_object.transform.eulerAngles;
@@ -90,7 +89,6 @@ public class Fire_Net : NetworkBehaviour
 
     public void MineSpawn(Vector3 pos){
         GameObject mine_object = Instantiate (mine,pos,Quaternion.identity);
-        // NetworkObject f = mine_object.GetComponent<NetworkObject>();
         mine_object.GetComponent<NetworkObject>().Spawn();
     }
 

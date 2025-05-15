@@ -12,17 +12,12 @@ public class Button_sheel : NetworkBehaviour
     public Button target_button;
     bool IsReady = false;
     public GameObject cam;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
+    int players = 2;
     // Update is called once per frame
     void Update()
     {
         //プレイヤー二人が準備完了したらプレイヤーの制限を開放する
-        if(networkint.Value >= 2 && !IsReady){
+        if(networkint.Value >= players && !IsReady){
             try{Destroy(target_button.gameObject);}
             catch (MissingReferenceException e){
             }

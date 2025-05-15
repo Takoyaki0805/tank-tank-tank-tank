@@ -11,12 +11,6 @@ public class Bullet_move : NetworkBehaviour
     public int bounce = 2;
     int count = 0;
     float timer = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,11 +24,6 @@ public class Bullet_move : NetworkBehaviour
         }
         timer += Time.deltaTime;
     }
-    public override void OnNetworkSpawn()
-    {
-
-    }
-
     //弾丸を破壊する
     void DisSpawn(){
         this.gameObject.GetComponent<NetworkObject>().Despawn();

@@ -3,20 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class Go_battle : MonoBehaviour
 {
+    string battle_scene_name = "newBattle";
     //バトルステージに移動するイベント
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Go()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public void Go(){ 
-        SceneManager.LoadScene("newBattle");
+        SceneManager.LoadScene(battle_scene_name);
     }
 }

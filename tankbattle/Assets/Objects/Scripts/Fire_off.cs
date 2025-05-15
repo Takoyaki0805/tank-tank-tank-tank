@@ -7,18 +7,6 @@ public class Fire_off : MonoBehaviour
 {
     public GameObject bullet_object;
     public GameObject target;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-                
-    }
-
     //弾丸を発射する
     public void OnFire(InputAction.CallbackContext context){
         Vector3 position = target.transform.position;

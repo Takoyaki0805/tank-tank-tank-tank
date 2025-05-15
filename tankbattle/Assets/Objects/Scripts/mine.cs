@@ -12,6 +12,7 @@ public class mine : NetworkBehaviour
     public GameObject bomb;
     Animator anim;
     public ParticleSystem particle;
+    string bomb_anim_name = "alarm";
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,7 +28,7 @@ public class mine : NetworkBehaviour
         //時間経過で爆破判定を出し、エフェクトを出す
         mine_timer += Time.deltaTime;
         if(mine_timer>=mine_pheseA){
-            anim.SetBool("alarm",true);
+            anim.SetBool(bomb_anim_name,true);
         }
         if(mine_timer>=mine_pheseB){
             bomb.SetActive(true);

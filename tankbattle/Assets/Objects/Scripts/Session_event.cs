@@ -9,18 +9,6 @@ using Unity.Services.Authentication;
 public class Session_event : NetworkBehaviour
 {
     [SerializeField]GameObject ready;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     //準備完了ボタンを出現させる
     public void PlayerBoot(){
         ready.SetActive(true);
@@ -28,11 +16,13 @@ public class Session_event : NetworkBehaviour
 
     //ネットワークを終了しマッチ画面に移動する
     public void stopnet(){
-        GameObject net = GameObject.FindWithTag("NET");
+        string manager_tag_name = "NET";
+        string scene_name = "NewMatch";
+        GameObject net = GameObject.FindWithTag(manager_tag_name);
         Destroy(net);
         LeaveSession();
         NetworkManager.Singleton.Shutdown();
-        SceneManager.LoadScene("NewMatch");
+        SceneManager.LoadScene(scene_name);
     }
 
     //セッションを破棄する
