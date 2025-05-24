@@ -10,10 +10,11 @@ public class Spawn_management : NetworkBehaviour
     public GameObject[] where_spawn;
     int spawn_index;
     bool IsReset = false;
+    int sheet = 2;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        int sheet = 2;
         empty = new bool[sheet];
         Array.Fill(empty,true);
     }

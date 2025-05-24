@@ -82,7 +82,7 @@ public class Player_life : NetworkBehaviour
 		newParticle.Play();
 		// インスタンス化したパーティクルシステムのGameObjectを5秒後に削除する。(任意)
 		// ※第一引数をnewParticleだけにするとコンポーネントしか削除されない。
-        float effect_kill_time = 5.0f
+        float effect_kill_time = 5.0f;
 		Destroy(newParticle.gameObject, effect_kill_time);
         //爆発エフェクトと同時に自機を見えなくさせる
         foreach (GameObject g in tank_polygon){
@@ -111,4 +111,3 @@ public class Player_life : NetworkBehaviour
         isOnetime = true;
     }
 }
--
